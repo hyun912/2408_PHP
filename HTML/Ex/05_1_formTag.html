@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+        <form> Tag : 태그안의 정보를 전송하기위해 사용, 주로 로그인이나 회원가입에서 쓰임
+
+        <label> Tag : 입력받는 해당 <input>의 설명을 담당
+            id와 for로 연결시켜서 포커싱 할수있음
+
+        <input> Tag : 데이터 입력받기용
+    -->
+    
+    <form action="./04_2_listTag.html">
+        <fieldset>
+            <legend>기본사항</legend>
+            
+            <label for="id">ID :</label>
+            <input type="text" id="id" maxlength="10" placeholder="소문자 10자 이내로만 가능" required>
+            <!-- maxlength : 최대글자수 -->
+            <!-- autofocus : 자동커서 -->
+
+            <br>
+            
+            <label for="pw">PW :</label>
+            <input type="password" id="pw" required>
+        </fieldset>
+
+        <br>
+        
+        <!-- @만 넣어도 통과가되서 잘안쓰임, 보통 input texe 2개로 분리헤놓고 js로 짬 -->
+        <label for="email">E-mail :</label>
+        <input type="email" id="email">
+
+        <br>
+
+        <input type="email" value="읽기전용" readonly>
+        <input type="number" min="0" max="99">
+
+        <br>
+
+        <!-- chk, radio의, name은 하나로 묶고, id는 다르게 -->
+        <input type="checkbox" name=fruit" id="banana">
+        <label for="banana">바나나</label> &nbsp;
+
+        <input type="checkbox" name=fruit" id="apple" checked disabled>
+        <label for="apple">사과</label> &nbsp;
+
+        <input type="checkbox" name=fruit" id="grape">
+        <label for="grape">포도</label>
+
+        <br>
+
+        <input type="radio" name="foods" id="blugoggi">
+        <label for="blugoggi">불고기</label> &nbsp;
+
+        <input type="radio" name="foods" id="hamberger">
+        <label for="hamberger">햄버거</label> &nbsp;
+
+        <input type="radio" name="foods" id="zzajang">
+        <label for="zzajang">짜장면</label> &nbsp;
+
+        <br>
+
+        <!-- 표시할게 없으면 공백이 있으면 안됨 -->
+        <textarea rows="3" cols="30"></textarea>
+
+        <br>
+
+        <select name="poketmon">
+            <option value="0">피카츄</option>
+            <option value="1">라이츄</option>
+            <option value="3">파이리</option>
+            <option value="4">파이리</option>
+        </select>
+
+        <br><br>
+
+        <!-- 버튼 생성 2가지 -->
+        <input type="submit" value="전송"></input>
+        <button type="reset">리셋</button> <!-- 주로씀 -->
+
+    </form>
+
+</body>
+</html>
