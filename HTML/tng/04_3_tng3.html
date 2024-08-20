@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px 20px;
+        }
+        
+        /* 마지막 td그룹 */
+        td:last-child { 
+            width: 200px;
+        }
+
+        caption {
+            font-size: 35px;
+            font-weight: bold;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+        <caption>수급 국원 지원 양식</caption>
+
+        <thead></thead>
+        <tbody>
+            <tr>
+                <th rowspan="3">개인정보</th>
+                <th>이름</th>
+                <td></td>
+            </tr>
+            <tr>
+                <!-- <td></td> -->
+                <th>학과/학번</th>
+                <td></td>
+            </tr>
+            <tr>
+                <!-- <td></td> -->
+                <th>연락처</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>지원분야</th>
+                <td colspan="2"></td>
+                <!-- <td></td> -->
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+        
+    </table>
+
+</body>
+</html>
