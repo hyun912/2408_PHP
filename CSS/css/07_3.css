@@ -1,0 +1,83 @@
+/* 글자색 지정 */
+.h2-color {
+    /* 색상명 */
+    /* color: red; */
+
+    /* 16진수, *가장 많이 쓰임 */
+    /* color: #ff0000; */
+
+    /* RGB, 위에거 아님 이거 */
+    /* color: rgb(255, 0, 0); */
+
+    /* RGBA, A는 투명도 */
+    /* color: rgb(255, 0, 0, 1); */
+
+    /* HSLA (색조, 채도, 명도)*/
+    color: hsl(0, 100%, 50%);
+}
+
+.td-none {
+    text-decoration:  none;
+}
+
+.td-underline {
+    /* 밑줄 */
+    text-decoration:  underline;
+}
+
+.td-through {
+    /* 취소선 */
+    text-decoration: line-through;
+}
+
+.alige-left {
+    text-align: left;
+}
+
+.alige-right {
+    text-align: right;
+}
+
+.alige-center {
+    text-align: center;
+}
+
+
+/* 정중앙정렬 1 */
+.center {
+    background-color: #a9a9a9;
+    height: 100px;
+    text-align: center;
+    line-height: 100px; /* 얼마나 내릴거냐 */
+}
+
+
+/* 영어 대소문자, 이작업은 보통 PHP에서나 함 */
+.transform {
+    /* 첫글자만 대문자 */
+    /* text-transform: capitalize;  */
+
+    /* 전부 대문자 */
+    /* text-transform: uppercase;  */
+    
+    /* 전부 소문자 */
+    text-transform: lowercase; 
+}
+
+
+/* 자간 */
+.letter-spacing {
+    letter-spacing: 10px;
+}
+
+/* 단어간 간격 */
+.word-spacing {
+    word-spacing: 20px;
+}
+
+
+/* 그림자 */
+.shadow {
+    /* 가로 세로 크기 색상 */
+    text-shadow: 5px 5px 1px #ff0000;
+}

@@ -1,0 +1,38 @@
+/* 전체 선택자 : 모든 요소 */
+* {
+    /* 글자박스 밖여백 */
+    margin: unset; 
+
+    /* 글자박스 안여백 */
+    padding: 0 auto;
+
+    color: skyblue;
+}
+
+
+/* 타입 선택자 : 특정 태그 요소 */
+h1 {
+    color: red;
+}
+
+
+/* class 선택자 : 선택된 class 요소 */
+.font-color {
+    color: orange;
+}
+
+.red-color {
+    color: red;
+}
+
+
+/* ID 선택자 */
+#strong-block {
+    color: black;
+}
+
+
+/* 그룹 선택자 : , 로 구분해 복수 선택 */
+#strong-block, .red-color {
+    font-size : 40px;
+}

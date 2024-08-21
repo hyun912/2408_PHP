@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/06_4.css">
+
+    <style>
+        #style-chat {
+            color: red;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 
+        css 실행순서
+            1. 인라인 style=
+            2. 내부 <style>
+            3. 외부 <link>
+    -->
+
+    <h1 id="style-chat" style="color: magenta;">CSS 실행순서</h1>
+
+
+    <!-- 
+        css 우선순위 
+            1. !important   //어쩔수 없는경우 아니면 안쓰는게 좋음
+            2. 인라인
+            3. id
+            4. class
+            5. 타입
+    -->
+
+    <h2 class="class-h2" id="id-h2" style="color: brown">CSS 적용순위</h2>
+
+</body>
+</html>
