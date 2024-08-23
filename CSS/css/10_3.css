@@ -39,7 +39,7 @@ input:focus {
 }
 
 
-/* 체크된 input 선택 **간간히 사용 */
+/* checked된 input의 label 선택 **간간히 사용 */
 input:checked + label {
     background-color: cadetblue;
 }
