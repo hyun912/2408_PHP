@@ -1,0 +1,20 @@
+/* 숨김 */
+.none {
+    display: none;
+}
+
+/* div처럼 한줄박스 만듬 */
+.block {
+    display: block;
+}
+
+/* span처럼 영역박스 만듬 */
+.inline {
+    display: inline;
+}
+
+/* 영역을 늘릴수 없을때 사용, **none과 같이 많이씀 */
+.inline-block {
+    width: 100px;
+    display: inline-block;
+}

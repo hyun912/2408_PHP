@@ -1,0 +1,61 @@
+* { 
+    /* **이거 중요함, 디폴트 설정 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 700px;
+    padding: 5px;
+}
+
+.header {
+    background-color: #000000;
+    padding: 20px 0px 10px 20px;
+}
+
+
+/* header 안의 h1들 */
+.header > h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.header > p {
+    color: #ffa500;
+}
+
+.main-check {
+    background-color: #000000;
+    color: white;
+    padding: 8px;
+}
+
+.main-info {
+    font-weight: bold;
+    line-height: 2rem;
+    text-align: center;
+}
+
+h2 {
+    color: #ff0000;
+    margin: 20px;
+}
+
+.small-text {
+    font-size: 0.8rem;
+}
+
+.text-blue {
+    color: #0000ff;
+}
+
+.border-box {
+    border: 1px solid #d3c9c9;
+}
+
+.div-bottom {
+    margin-bottom: 20px;
+}

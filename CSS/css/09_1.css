@@ -1,0 +1,17 @@
+div {
+
+    background-color: cadetblue;
+    border: 10px dotted #000;
+    width: 150px;
+    height: 150px;
+    padding: 30px;
+
+    
+    /* 
+        background-clip
+        - border-box : 테두리까지 적용 (default)
+        - padding-box : 패딩범위까지 적용
+        - content-box : 콘텐츠 부분에만 적용 
+    */
+    background-clip: content-box;
+}

@@ -1,0 +1,42 @@
+
+.div-1 {
+    /* 테두리 선 */
+    border-style: solid;
+
+    /* 테두리 색상*/
+    border-color: #ff0000;
+
+    /* 테두리 둥글게 */
+    border-radius: 10px;
+    
+    /* 
+        ㄴ특정위치만 둥글게 
+        border-top-left-radius
+        border-top-right-radius
+        border-bottom-left-radius
+        border-bottom-right-radius
+    */
+
+
+    /* 
+        테두리 굵기, 각각 다르게 주고싶을때만 사용 
+            ㄴ1개 : 전체
+            ㄴ2개 : 상하, 좌우
+            ㄴ3개 : 위, 좌우, 아래
+            ㄴ4개 : 위, 우, 아래, 좌
+    */
+    border-width: 5px 10px 15px 20px;
+}
+
+.div-2 {
+    /* **제일 흔하게 쓰임 */
+    border: 1px solid #ff0000;
+    
+    /* 
+        ㄴ특정위치만 선넣기 
+        border-left
+        border-right
+        border-top
+        border-bottom
+    */
+}

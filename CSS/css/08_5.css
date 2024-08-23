@@ -1,0 +1,66 @@
+main, div {
+    background-color: #008000;
+    padding: 20px;
+}
+
+
+main {
+    background-color: #f1a4b5;
+    width: 300px;
+    height: 1000px;
+}
+
+.div-stacic {
+    background-color: #808080;
+    
+    /* 디폴트, 문서 흐름맞춰 배치 */
+    position: static;
+}
+
+.div-relative {
+    background-color: #00ffff;
+    position: relative;
+    /* top: 20px;
+    left: 20px; */
+}
+
+.div-relative-absolute {
+    background-color: #a5b8a0;
+
+    /* 기본적으로 static와 같으나, 자신의 원래 위치를 기준으로 위치 지정 가능 */
+    position: relative;
+}
+
+.div-absolute {
+    background-color: #8a2be2;
+
+    /* 상위요소에 relative있는 기준으로 결정됨, 없으면 body, 근데 쓰는건 최악의 수 */
+    position: absolute;
+    top: 0px;
+}
+
+
+.div-fixed {
+    background-color: #deb887;
+    /* 화면(view port)을 기준으로 위치값 결정 **제일 많이씀 */
+
+    position: fixed;
+
+    right: 10%;
+    bottom: 10%;
+
+    /* 
+        vw : vertical height, 화면(view port)에 맞게 좌우조절
+        vh : vertical width, 화면(view port)에 맞게 상하조절
+        % : 부모요소에 대한 상대 크기
+    */
+}
+
+.div-sticky {
+    background-color: #7fff00;
+
+    /* 스크롤을 내려도 화면에 남아 고정시키는 포지션, **fixed와 마찬가지도 쓰임 */
+    position: sticky;
+    top: 10px;
+}
+

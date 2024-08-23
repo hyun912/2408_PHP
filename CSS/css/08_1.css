@@ -1,0 +1,17 @@
+div, span {
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #000000;
+    width: 200px;
+    height: 150px;
+}
+
+.div-1 {
+    /* 테두리 + padding + content로 결정, **일반적으로 *에 넣고 사용함 */
+    box-sizing: border-box;
+}
+
+.div-2 {
+    /* content로만 결정, 디폴트 */
+    box-sizing: content-box;
+}

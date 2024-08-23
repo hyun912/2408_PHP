@@ -1,0 +1,52 @@
+div {
+    border: 1px solid #000000;
+    width: 400px;
+}
+
+h1, p {
+    border: 1px solid #000000;
+    width: 150px;
+}
+
+
+/* 
+    margin 중첩 : 중간에 세로로 껴있을 넓이는 합쳐지지않고 높은쪽으로 결정됨 
+        가로는 상관없음
+*/
+h1 {
+    margin: 30px auto;
+}
+
+p {
+    margin: 5px auto;
+}
+
+
+.div-2 {
+    padding: 50px;
+}
+
+
+.div-3, .div-4 {
+    width: 60px;
+    height: 50px;
+    margin: 20px;
+}
+
+
+/* 
+    그림자 : 수평거리, 수직거리, 흐림정도, 번짐정도, 색상, 그림자방향 
+                ㄴ+는 오른쪽, -는 왼쪽
+                        ㄴ+는 아래쪽, -는 위쪽
+                                ㄴ+록 그림자를 부드럽게 생성, -불가능
+                                            ㄴ+록 박스보다 크게 -불가능           
+                                                    ㄴinset 설정 시 박스 안쪽으로 그림자
+                                                    ㄴinset 미설정 시 박스 바깥쪽으로 그림자
+*/
+.div-3 {
+    box-shadow: 10px 10px 10px 10px #000000;
+}
+
+.div-4 {
+    box-shadow: 10px 10px 10px 10px #000000 inset;
+}
