@@ -1,0 +1,96 @@
+/* 
+    가상 선택자
+
+    - HTML 요소의 상태에 따라 선택해 스타일을 지정
+    - 선택자:가상클래스명 
+*/
+
+a:link {
+    /* 방문이력이 '없는' 링크 */
+    color: red;
+}
+
+a:visited {
+    /* 방문이력이 '있는' 링크 */
+    color: green;
+}
+
+
+/* 
+    **많이쓰임, 근데 CSS보단 JS로 하는게 익숙함 
+    커서가 대상에 올라갔을때 
+*/
+a:hover {
+    /* */
+    color: violet;
+}
+
+
+/* 꾸욱 누르고 있을때 적용 */
+a:active {
+    font-size: 5rem;
+}
+
+
+/* 포커싱된 요소에 적용 **은근히 사용 */
+input:focus {
+    border: 3px solid green;
+    outline: none;
+}
+
+
+/* 체크된 input 선택 **간간히 사용 */
+input:checked + label {
+    background-color: cadetblue;
+}
+
+
+/* 해당 요소를 클릭하면 실행 */
+#p1:target {
+    background-color: bisque;
+}
+
+#p2:target {
+    background-color: chocolate;
+}
+
+
+/* 해당 선택요소 제외 나머지에 적용 */
+.container :not(p) {
+    color: red;
+}
+
+
+/* n번째 자식만 적용 */
+.container :nth-child(3) {
+    color: blue;
+}
+
+
+/*
+    +n은 자식부터 적용, 
+    -n은 자식까지 적용 
+*/
+.container :nth-child(-n+5) {
+    color: skyblue;
+}
+
+.container :nth-child(n+2):nth-child(-n+4) {
+    color: pink;
+}
+
+
+/* 홀수 or 짝수 번째 자식 적용   **자주쓰임 */
+.container :nth-child(odd) {
+    background-color: green;
+}
+
+.container :nth-child(even) {
+    background-color: yellowgreen;
+}
+
+
+/* 부모요소내 특정 n번째 자식 선택 */
+.container p:nth-of-type(2) {
+    font-size: 2rem;
+}

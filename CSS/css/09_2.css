@@ -21,7 +21,10 @@
 
 
     /* 배경 초기위치 설정, **center가 제일 흔함 */
-    background-position: center;
+    /* background-position: center; */
+
+
+    background-attachment: fixed;
 }
 
 .div-repeat {
@@ -29,9 +32,12 @@
     height: 200px;
     background-image: url("../img/github.png");
 
+    background-repeat: round;
+
+    
     /* 
         작은 이미지가 여러개일때 no-repeat주면 하나만 표시, div크기는 그대로니 주의
         알고만 있으면 언젠가 쓰임, 많이 쓰이진않음 
     */
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
 }
