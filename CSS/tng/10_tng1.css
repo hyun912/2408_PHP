@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 20px;
+}
+
+ul {
+    list-style-type: none;
+    display: inline-block;
+    background-color: #bebebe;
+    line-height: 50px;
+    box-shadow: 5px 5px 10px 5px #000000;
+}
+
+li {
+    float: left;
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+    text-align: center;
+    /* border-right: 1px solid #ffff00; */
+    font-weight: 500;
+}
+
+/* 
+.red {
+    border-right: none;
+} 
+
+.red:hover {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+*/
+
+li:hover {
+    background-color: #4d4d4d;
+}
+
+
+/* 선택사항 */
+li:not(:last-child) {
+    border-right: 1px solid #ffff00;
+}
+
+li:last-child:hover {
+    background-color: #ff0000;
+    color: #ffffff;
+}
