@@ -1,0 +1,17 @@
+/* 잘 안씀, 쓸거면 구글링헤서 이미 만든걸 사용 */
+.ball {
+    background-color: pink;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    animation: updowm 1s infinite alternate ease-in-out;
+}
+
+@keyframes updowm {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100px);
+    }
+}

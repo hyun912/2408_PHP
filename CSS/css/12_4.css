@@ -1,0 +1,124 @@
+.item {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+    background-color:  #5f9ea0;
+}
+
+/* **flex는 그리드와 같이 많이쓰임 */
+.container-row {
+    display: flex;
+
+    /* 아래것들을 쓰려면 선결로 위에 flex 선언이 되어있어야함 */
+
+    /* 
+        가로 정렬, 세로는 column, 
+        뒤에 -reverse를 붙이면 역순정렬됨, 근데 역순은 잘안씀
+    */
+    flex-direction: row;
+}
+
+.container-wrap {
+    display: flex;
+    color: yellow;
+    /*
+        -flex-wrap 값
+        nowrap: 기본설정, no enter
+        wrap: width가 모자라면 enter 
+
+        마찬가지로 -reverse를 붙이면 역순정렬, 역시 안씀
+     */
+    flex-wrap: wrap;
+}
+
+.container-flow {
+
+    /* 
+        direction + wrap 
+
+        direction는 가로로 할건지 세로로 할건지 축을 결정
+        wrap는 enter 처리를 할건지 결정
+    
+    */
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.container-justify-content {
+    display: flex;
+    flex-flow: row wrap;
+
+    /* '주축'(행) 기준 정렬 
+    
+        - flex-start
+            주축기준 시작점에 맞춰 배치
+            |ㅁㅁㅁㅁㅁ              |
+
+        - flex-end
+            주축기준 끝점에 맞춰 배치
+            |              ㅁㅁㅁㅁㅁ|
+
+        - center **가장 자주씀
+            주축기준 중앙 배치
+            |       ㅁㅁㅁㅁㅁ       |
+            
+        - space-between
+            주축의 시작점에 첫번째 항목, 끝점에 마지막 항목을 배치 후 나머지를 같은 간격으로 배치
+            |ㅁ    ㅁ   ㅁ   ㅁ    ㅁ|
+
+        - space-around
+            주축에 같은 간격으로 배치
+            | ㅁ   ㅁ   ㅁ   ㅁ   ㅁ |
+
+    */
+    /* gap: item 간의 간격조절 */
+    justify-content: center;
+}
+
+.container-align-items {
+    display: flex;
+    flex-flow: row wrap;
+    height: 700px;
+    background-color: coral;
+
+    /* '교차축'(열) '한줄' 기준 
+        - flex-start, flex-end, center
+            위와 같음, 교차축 기준
+
+        - baseline
+            교차축의 문자 바닥 기준선에 맞춰 배치, 잘안씀
+
+        - stretch 
+            교차축에 가득 차게 배치, 잘안씀
+    */
+
+    align-items: center;
+}
+
+.container-align-self {
+    /* 교차축 '개별' 정렬, 잘안씀 */
+    display: flex;
+    flex-flow: row wrap;
+    height: 700px;
+    background-color: coral;
+}
+.container-align-self :nth-child(2){
+    align-self: flex-end;
+}
+.container-align-self :nth-child(5){
+    align-self: center;
+}
+
+
+.container-align-content {
+    /* 
+        교차축 '여러줄'기준 정렬, align-items보단 많이씀
+        옵션값은 justify-content와 같음
+    */
+    display: flex;
+    flex-flow: row wrap;
+    height: 700px;
+    background-color: coral;
+
+    align-content: center;
+}

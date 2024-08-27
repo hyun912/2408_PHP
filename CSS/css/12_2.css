@@ -1,0 +1,27 @@
+/* 적극적으로 활용하진 않음, 근데 가끔 어쩔수없이 사용할때가 있음 */
+div {
+    width: 100px;
+    height: 100px;
+}
+
+/* 500까지 적용 */
+@media (max-width: 500px) {
+    div {
+        background-color: black;
+    }
+}
+
+
+/* 501~1000 적용 */
+@media (min-width: 501px) and (max-width: 1000px) {
+    div {
+        background-color: red;
+    }
+}
+
+/* 1001~ 적용 */
+@media (min-width: 1001px) {
+    div {
+        background-color: green;
+    }
+}
