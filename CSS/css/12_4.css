@@ -12,7 +12,7 @@
     /* 아래것들을 쓰려면 선결로 위에 flex 선언이 되어있어야함 */
 
     /* 
-        가로 정렬, 세로는 column, 
+        가로 정렬 row, 세로는 column, 
         뒤에 -reverse를 붙이면 역순정렬됨, 근데 역순은 잘안씀
     */
     flex-direction: row;
