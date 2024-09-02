@@ -214,4 +214,31 @@ WHERE
 	end_at IS NULL
 GROUP BY dept_code
 ;
+
+
+/*
+	limit : 조회된것중 상위 [number]개로 제한, **orderby와같이 많이씀
+	offset : [number]개만큼 건너뜀
+*/
+
+SELECT *
+FROM employees
+ORDER BY emp_id ASC
+LIMIT 5 OFFSET 2
+;
+
+SELECT *
+FROM salaries
+WHERE
+	end_at IS NULL
+ORDER BY salary DESC
+LIMIT 5 
+;
+
+
+
+
 		
+
+
+
