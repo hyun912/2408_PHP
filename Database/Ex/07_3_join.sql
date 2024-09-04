@@ -17,7 +17,7 @@ FROM employees
 		ON employees.emp_id = department_emps.emp_id
 		AND department_emps.end_at IS NULL
 	JOIN departments
-		ON department_emps.dept_code = department_emps.dept_code
+		ON department_emps.dept_code = departments.dept_code
 WHERE
 	departments.end_at IS NULL
 ;
