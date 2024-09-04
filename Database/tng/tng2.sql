@@ -98,6 +98,31 @@ WHERE
 GROUP BY title_emps.emp_id
 ;
 
+
+-- 7.5. 현재 각 부장별 이름, 연봉평균
+SELECT
+	employees.emp_id
+	,employees.name
+	,avg_table.avg_sal
+FROM employees
+	JOIN (
+		SELECT
+			title_emps.emp_id
+			,AVG(salaries.salary) avg_sal
+		FROM title_emps
+			JOIN titles
+				ON title_emps.title_code = titles.title_code
+					AND titles.title = '부장'
+					AND title_emps.end_at IS NULL
+			JOIN salaries
+				ON title_emps.emp_id = salaries.emp_id
+		GROUP BY title_emps.emp_id
+	) avg_table
+		ON employees.emp_id = avg_table.emp_id
+;
+
+
+
 -- 8. 부서장직을 역임했던 모든 사원의 이름과 입사일, 사번, 부서번호를 출력해 주세요.
 
 SELECT
