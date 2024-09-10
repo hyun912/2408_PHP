@@ -43,8 +43,7 @@ SELECT
 	emp_id
 	,salary
 	,CASE
-		WHEN salary <= 30000000
-			THEN '평범'
+		WHEN salary <= 30000000 THEN '평범'
 		ELSE '많다'
 	END AS 'wayge'
 FROM salaries

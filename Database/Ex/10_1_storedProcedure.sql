@@ -37,7 +37,7 @@ BEGIN
 	SELECT emp_id
 	INTO cup -- ↖변수담음
 	FROM employees
-	ORDER BY emp_id desc
+	ORDER BY emp_id DESC
 	LIMIT 1
 	;
 	
