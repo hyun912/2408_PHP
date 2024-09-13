@@ -2,7 +2,8 @@
 
     // 3의 배수 박수
     for($i = 1; $i < 101; $i++) {
-        echo $i % 3 === 0 ? "  짝\n" : " ".$i."," ;
+        echo $i % 3 === 0 ? " 짝" : " ".$i;
+        if($i !== 100) echo ", ";
     }
 
     echo "\n";
@@ -16,9 +17,7 @@
         ,["id" => 4, "name" => "갑돌이", "gender" => "M", "salary" => "8000"]
     ];
 
-    foreach($arr as $val) {
-        if($val["salary"] >= 5000 && $val["gender"] === "M")
-            echo "id: ".$val["id"].", name: ".$val["name"]."\n";
+    foreach($arr as $item) {
+        if(((int)$item["salary"] >= 5000) && ($item["gender"] === "M"))
+            echo "id: ".$item["id"].", name: ".$item["name"]."\n";
     }
-
-
