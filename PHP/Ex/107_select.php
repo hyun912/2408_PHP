@@ -2,7 +2,6 @@
 
     require_once("./my_db.php");
 
-
     try{
         $conn = my_db_conn();
 
@@ -25,9 +24,10 @@
     
         $stmt = $conn->prepare($sql); // 준비시킴
         $stmt->execute($arr_prepare); // 실행
-        $result = $stmt->fetchAll(); // 결과 패치
+        $result = $stmt->fetchAll(); // 결과 패치   
     
         print_r($result);
+
     } catch(Throwable $th) { 
         echo $th->getMessage();
     } 
