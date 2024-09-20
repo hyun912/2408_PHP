@@ -1,6 +1,7 @@
 <?php
 
     // 내 급여 2500만 변경
+    // update 먼저하고 insert하는게 효율 좋다함
 
     require_once("../Ex/my_db.php");
 
@@ -35,19 +36,47 @@
     
         $stmt = $conn->prepare($sql); 
         $result_flg = $stmt->execute($arr_prepare);
-        $result_cnt = $stmt->rowCount();
         $result = $stmt->fetchAll();
 
         if(!$result_flg) {
             throw new Exception("Select Query Error : employees");
         }
 
-        if($result_cnt !== 1) {
+        if($stmt->rowCount() !== 1) {
             throw new Exception("Select Count Error : employees");
         }
 
 
         $emp_id = $result[0]["emp_id"];
+
+    
+        // ---------------------------------------
+        // update
+        $sql = 
+            " UPDATE salaries "
+            ." SET "
+            ."      end_at = DATE(NOW()) "
+            ."      ,updated_at = NOW() "
+            ." WHERE "
+            ."      emp_id = :emp_id "
+            ."  AND end_at IS NULL "
+            // ."  AND sal_id != :sal_id "
+        ;
+
+        $arr_prepare = [
+            "emp_id" => $emp_id
+            // ,"sal_id" => $sal_id
+        ];
+
+        $stmt = $conn->prepare($sql);
+
+        if(!$stmt->execute($arr_prepare)) {
+            throw new Exception("Update Query Error : salaries");
+        }
+
+        if($stmt->rowCount() !== 1) {
+            throw new Exception("Update Count Error : salaries");
+        }
     
 
         // ---------------------------------------
@@ -71,50 +100,16 @@
         ];
 
         $stmt = $conn->prepare($sql);
-        $result_flg = $stmt->execute($arr_prepare);
-        $result_cnt = $stmt->rowCount();
 
-        if(!$result_flg) {
+        if(!$stmt->execute($arr_prepare)) {
             throw new Exception("Insert Query Error : salaries");
         }
 
-        if($result_cnt !== 1) {
+        if($stmt->rowCount() !== 1) {
             throw new Exception("Insert Count Error : salaries");
         }
 
-        
-        $sal_id = $conn->lastInsertId();
-
-    
-        // ---------------------------------------
-        // update
-        $sql = 
-            " UPDATE salaries "
-            ." SET "
-            ."      end_at = DATE(NOW()) "
-            ."      ,updated_at = NOW() "
-            ." WHERE "
-            ."      emp_id = :emp_id "
-            ."  AND end_at IS NULL "
-            ."  AND sal_id != :sal_id "
-        ;
-
-        $arr_prepare = [
-            "emp_id" => $emp_id
-            ,"sal_id" => $sal_id
-        ];
-
-        $stmt = $conn->prepare($sql);
-        $result_flg = $stmt->execute($arr_prepare);
-        $result_cnt = $stmt->rowCount();
-
-        if(!$result_flg) {
-            throw new Exception("Update Query Error : salaries");
-        }
-
-        if($result_cnt !== 1) {
-            throw new Exception("Update Count Error : salaries");
-        }
+        // $sal_id = $conn->lastInsertId();
 
         $conn->commit();
 
