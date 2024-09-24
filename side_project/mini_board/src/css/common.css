@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: '맑은고딕';
+}
+
+button {
+    background-color: #9AADFA;
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+button:hover {
+    background-color: #607FFF;
+}
+
+
+/* //////////////////////////////////////////////////// 
+    Header
+//////////////////////////////////////////////////// */
+
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    font-size: 3rem;
+    color: #8AA5FE;
+}
+
+
+/* //////////////////////////////////////////////////// 
+    Main
+//////////////////////////////////////////////////// */
+
+
+main {
+    background-color: #CAD6FF;
+    margin: 0 auto;
+    padding: 15px 30px;
+    width: 700px;
+    border-radius: 10px;
+}
+
+.btn-rigth {
+    width: 110px;
+    height: 40px;
+    border-radius: 40px;
+}
+
+.main-middle {
+    margin-top: 15px;
+}
+
+.main-bottom {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.btn-small {
+    width: 40px;
+    height: 40px;
+}
