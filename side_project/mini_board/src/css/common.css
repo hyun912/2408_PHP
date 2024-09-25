@@ -69,3 +69,8 @@ main {
     width: 40px;
     height: 40px;
 }
+
+.btn-selectd {
+    border : 3px solid #4e41fff1;
+    color : #4e41fff1;
+}
