@@ -153,7 +153,7 @@
         ; // 소프트 딜리트
 
         $stmt = $conn->prepare($sql);
-
+        
         if(!$stmt->execute($arr_param)) {
             throw new Exception("Delete Query Error : boards");
         }
