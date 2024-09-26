@@ -6,6 +6,8 @@
 
     try {
 
+        // $conn = my_db_conn();
+
         if(strtoupper($_SERVER["REQUEST_METHOD"]) === "GET") { // detail -> update
             $id = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
@@ -35,18 +37,23 @@
             $conn = my_db_conn();
 
             $conn->beginTransaction();
-
+            
             $arr_prepare = [
                 "id" => $id
                 ,"title" => $title 
                 ,"content" => $content
             ];
 
+            my_board_update($conn, $arr_prepare);
+            
             $conn->commit();
+            
+            header("Location: /detail.php?id=".$id."&page=".$page);
+            exit;
         }
 
     } catch(Throwable $th) {
-        if(($_SERVER["REQUEST_METHOD"]) === "POST" && !is_null($conn)) {
+        if(!is_null($conn) && $conn->inTransaction()) {
             $conn->rollBack();
         }
 
@@ -70,7 +77,7 @@
     <?php require_once(MY_PATH_ROOT."header.php") ?>
     
     <main>
-        <form action="/update.html" method="post">
+        <form action="/update.php" method="post">
 
             <input type="hidden" name="page" value="<?php echo $page ?>">
             <input type="hidden" name="id" value="<?php echo $result["id"] ?>">
@@ -91,7 +98,7 @@
                     <textarea name="content" id="content" require><?php echo $result["content"] ?></textarea>
                 </div>
             </div>
-
+            
             <div class="main-bottom">
                 <button type="submit" class="btn-small">수정</button>
                 <a href="/detail.php?id=<?php echo $result["id"] ?>&page=<?php echo $page ?>">

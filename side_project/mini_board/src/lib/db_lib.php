@@ -24,6 +24,8 @@
             ."       * "
             ." FROM "
             ."      boards"
+            ." WHERE "
+            ."       deleted_at IS NULL "
             ." ORDER BY "
             ."          created_at DESC "
             ."          , id DESC"
@@ -98,6 +100,7 @@
             ."      boards "
             ." WHERE "
             ."      id = :id "
+            ."  AND deleted_at IS NULL "
         ;
 
         $stmt = $conn->prepare($sql);
@@ -107,4 +110,57 @@
         }
 
         return $stmt->fetch();
+    }
+
+    /**
+     * boards Update 처리
+     */
+    function my_board_update(PDO $conn, array $arr_param) {
+        $sql =
+            " UPDATE boards "
+            ." SET "
+            ."     title = :title "
+            ."     ,content = :content "
+            ."     ,updated_at = NOW() "
+            ." WHERE "
+            ."       id = :id "
+        ;
+
+        $stmt = $conn->prepare($sql);
+
+        if(!$stmt->execute($arr_param)) {
+            throw new Exception("Update Query Error : boards");
+        }
+
+        if($stmt->rowCount() !== 1) {
+            throw new Exception("Update Count Error : boards");
+        }
+
+        return true;
+    }
+
+    /**
+     * borders Delete 처리
+     */
+    function my_board_delete(PDO $conn, array $arr_param) {
+        $sql = 
+            " UPDATE boards "
+            ." SET "
+            ."     updated_at = NOW() "
+            ."     ,deleted_at = NOW() "
+            ." WHERE "
+            ."       id = :id "
+        ; // 소프트 딜리트
+
+        $stmt = $conn->prepare($sql);
+
+        if(!$stmt->execute($arr_param)) {
+            throw new Exception("Delete Query Error : boards");
+        }
+
+        if($stmt->rowCount() !== 1) {
+            throw new Exception("Delete Query Error : boards");
+        }
+
+        return true;
     }

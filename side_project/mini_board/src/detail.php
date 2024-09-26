@@ -63,9 +63,15 @@
             </div>
 
             <div class="main-bottom">
-                <a href="/update.php?id=<?php echo $result["id"] ?>&page=<?php echo $page ?>"><button type="button" class="btn-small">수정</button></a>
-                <a href="/index.php?page=<?php echo $page ?>"><button type="button" class="btn-small">취소</button></a>
-                <a href="/delete.php"><button type="reset" class="btn-small">삭제</button></a>
+                <a href="/update.php?id=<?php echo $result["id"] ?>&page=<?php echo $page ?>">
+                    <button type="button" class="btn-small">수정</button>
+                </a>
+                <a href="/index.php?page=<?php echo $page ?>">
+                    <button type="button" class="btn-small">취소</button>
+                </a>
+                <a href="/delete.php?id=<?php echo $result["id"] ?>&page=<?php echo $page ?>">
+                    <button type="reset" class="btn-small">삭제</button>
+                </a>
             </div>
         </div>
     </main>
