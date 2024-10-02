@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/index.css" />
 
-    <title>Document</title>
+    <title>우물 안의 페페 집</title>
   </head>
   <body>
     <button aria-pressed="false">
@@ -29,17 +29,17 @@
 
     <header>
       <h1>
-        <a href="./index.html">우물</a>
-        <!-- 우물 이미지 SPAN -->
-        <span class="pepe-well"></span>
-        <a href="./index.html">안의 페페</a>
-        <!-- 페페 이미지 SPAN -->
-        <span class="pepe-bro"></span>
-        <a href="./index.html">집</a>
-        <!-- 베타 글자 SPAN -->
-        <span class="text-beta">
-          <a href="./index.html">βeta</a>
-        </span>
+        <a href="./index.html">
+          우물
+          <!-- 우물 이미지 SPAN -->
+          <span class="pepe-well"></span>
+          안의 페페
+          <!-- 페페 이미지 SPAN -->
+          <span class="pepe-bro"></span>
+          집
+          <!-- 베타 글자 SPAN -->
+          <span class="text-beta">βeta</span>
+        </a>
       </h1>
     </header>
 
@@ -90,7 +90,7 @@
               </a>
 
               <!-- 글쓰기 DIV-->
-              <a href="" class="btn btn-sm btn-mr">
+              <a href="./create.html" class="btn btn-sm btn-mr">
                 <span class="btn-icons btn-icon-dig"></span>
                 굴파기
               </a>
@@ -119,14 +119,256 @@
             </div>
           </div>
 
-          <!-- 메인 리스트 영역 -->
+          <!-- 메인 리스트 영역 DIV -->
           <div class="content-list">
+            <!-- 리스트 헤드 영역 DIV -->
             <div class="item list-head">
               <div>번호</div>
               <div>제목</div>
               <div>작성자</div>
               <div>작성일</div>
               <div>조회수</div>
+            </div>
+
+            <!-- 리스트 공지 영역 DIV -->
+            <div class="item list-board list-notice">
+              <div>공지</div>
+              <div>이것은 공지입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board list-notice">
+              <div>공지</div>
+              <div>이것은 공지입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board list-notice">
+              <div>공지</div>
+              <div>이것은 공지입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <!-- 리스트 일반 영역 DIV-->
+            <a href="./detail.html" onmouseover="loadThumb(1, 'ttabong.webp')">
+              <div class="item list-board">
+                <div>30</div>
+                <div>
+                  <span class="list-tab">Tab 1</span>
+                  이것은 일반입니다. 여튼 그런겁니다
+                </div>
+                <div>
+                  <span class="btn-icons list-icon-title-stamp"></span>
+                  익명의 페페
+                </div>
+                <div>2024-10-02</div>
+                <div>30</div>
+              </div>
+              <div class="thumb-preview" id="thumb-1"></div>
+            </a>
+
+            <!-- ↑ a, 미리보기 JS -->
+
+            <div class="item list-board">
+              <div>29</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>28</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>27</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>26</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>
+                <span class="btn-icons btn-icon-bookmark"></span>
+              </div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>24</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>23</div>
+              <div>
+                <span class="list-tab">Tab 4</span>
+                이것은 일반입니다. 여튼 그런겁니다
+              </div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>22</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>21</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>20</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+
+            <div class="item list-board">
+              <div>19</div>
+              <div>이것은 일반입니다. 여튼 그런겁니다</div>
+              <div>
+                <span class="btn-icons list-icon-title-stamp"></span>
+                익명의 페페
+              </div>
+              <div>2024-10-02</div>
+              <div>30</div>
+            </div>
+          </div>
+
+          <!-- 하단 영역 -->
+          <div class="footer">
+            <!-- 검색바 영역 -->
+            <div class="search-bar">
+              <form action="./index.html" method="GET">
+                <!-- 검색 선택바 -->
+                <select class="btn-sm">
+                  <option value="all">전체</option>
+                  <option value="title">제목</option>
+                  <option value="content">내용</option>
+                </select>
+
+                <!-- 검색 입력바 -->
+                <input type="text" class="btn-sm" />
+
+                <!-- 돋보기 아이콘 -->
+                <button type="submit" class="btn-icons btn-sm"></button>
+              </form>
+            </div>
+
+            <!-- 페이지네이션 영역 -->
+            <div class="pagination-bar">
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">&lt;</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar page-enable">1</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">2</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">3</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">4</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">5</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">6</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">7</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">8</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">9</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">10</button>
+              </a>
+              <a href="./index.html">
+                <button class="btn btn-sm btn-page-bar">&gt;</button>
+              </a>
             </div>
           </div>
         </div>
@@ -139,5 +381,6 @@
 </html>
 
 <script src="./js/common.js"></script>
+<script src="./js/index.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

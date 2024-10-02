@@ -32,12 +32,12 @@ body {
 
 /* 기본적으로 a버튼 호버시 음영변경 */
 .btn:hover {
-  background-color: #dddddd;
+  background-color: #eee;
 }
 
 /* 작은 버튼용 설정 */
 .btn-sm {
-  border: 1px solid #bbbbbb;
+  border: 1px solid #bbb;
   color: initial;
   padding: 0.3rem;
   font-size: 0.8rem;
@@ -88,10 +88,12 @@ h1 {
 
 /* 헤더 좌측 우물 WEBP */
 .pepe-well {
+  /* SPAN은 기본적으로 인라인 요소기 때문에 블록화해줌 */
+  display: inline-block;
   width: 3.5rem;
   height: 2.5rem;
-  margin: 1rem 0.3rem 0 0.5rem;
-  margin-top: 1rem;
+  /* margin: 1rem 0.3rem 0 0.5rem; */
+  vertical-align: bottom;
   background-image: url("../img/icons/well.webp");
   background-repeat: no-repeat;
   background-position: center;
@@ -104,10 +106,13 @@ h1 {
 
 /* 헤더 우측 페페 WEBP */
 .pepe-bro {
+  /* SPAN은 기본적으로 인라인 요소기 때문에 블록화해줌 */
+  display: inline-block;
   width: 3rem;
   height: 3rem;
-  margin: 0.5rem 0.5rem 0 0.5rem;
-  background-image: url("../img/pcons/simulug.webp");
+  /* margin: 0.5rem 0.5rem 0 0.5rem; */
+  vertical-align: bottom;
+  background-image: url("../img/pcons/left_simulug.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -115,7 +120,7 @@ h1 {
 
 /* ↑페페 호버시 따봉 WEBP */
 .pepe-bro:hover {
-  background-image: url("../img/pcons/ttabong.webp");
+  background-image: url("../img/pcons/left_ttabong.webp");
 }
 
 /* ↑페페 누르고 있을시 쓰담 GIF 재생 */
@@ -155,18 +160,17 @@ main {
 [data-theme="dark"] {
   color-scheme: dark only;
 
-  .btn-icons {
-    filter: invert(100%);
-  }
-
-  .tab-enable {
-    box-shadow: 0 2px 0 0 #121212;
+  button > svg {
+    color: #000;
   }
 }
 
-[data-theme="light"],
-html {
+[data-theme="light"] {
   color-scheme: light only;
+
+  button > svg {
+    color: #fff;
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -199,6 +203,7 @@ body::before {
   pointer-events: none;
   z-index: -1;
 
+  /* 점박이 */
   /* background: radial-gradient(
       4px 4px at 50% 50%,
       var(--line) 2px,
@@ -212,7 +217,7 @@ body::before {
   max-width: calc(100% - 2rem);
 } */
 
-:root {
+/* :root {
   --size: 45px;
   --line: color-mix(in lch, white, transparent 85%);
   background:
@@ -221,7 +226,7 @@ body::before {
     linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
       var(--size) var(--size),
     hsl(210 70% 34%);
-}
+} */
 
 ::view-transition-new(body),
 ::view-transition-old(body) {
@@ -310,7 +315,6 @@ body {
 
 button > svg {
   width: 50%;
-  color: #fff;
 }
 
 button:is(:focus-visible, :hover) {
