@@ -29,15 +29,17 @@
 
     <header>
       <h1>
-        우물
+        <a href="./index.html">우물</a>
         <!-- 우물 이미지 SPAN -->
         <span class="pepe-well"></span>
-        안의 페페
+        <a href="./index.html">안의 페페</a>
         <!-- 페페 이미지 SPAN -->
         <span class="pepe-bro"></span>
-        집
+        <a href="./index.html">집</a>
         <!-- 베타 글자 SPAN -->
-        <span class="text-beta">βeta</span>
+        <span class="text-beta">
+          <a href="./index.html">βeta</a>
+        </span>
       </h1>
     </header>
 
@@ -57,17 +59,24 @@
             <!-- 좌측 버튼 영역 DIV -->
             <div class="content-top-left">
               <!-- 전체글 DIV -->
-              <button type="button" class="btn">전체굴</button>
+              <a href="./index.html" class="btn btn-sm btn-mr">
+                <span class="btn-icons btn-icon-all-pages"></span>
+                전체굴
+              </a>
 
               <!-- 즐겨찾기 DIV -->
-              <button type="button" class="btn">즐겨찾기</button>
+              <a href="./index.html" class="btn btn-sm btn-mr">
+                <span class="btn-icons btn-icon-bookmark"></span>
+                즐겨찾기
+              </a>
 
-              <!-- 정렬 셀렉트 폼 DIV -->
-              <form action="./index.html">
-                <select onchange="this.form.submit()">
-                  <option value="0">최신순</option>
-                  <option value="1">오래된순</option>
-                  <option value="2">조회순</option>
+              <!-- 정렬 셀렉트폼 DIV -->
+              <form action="./index.html" method="GET">
+                <!-- onchange="this.form.submit()" -->
+                <select class="btn-sm">
+                  <option value="latest">최신순</option>
+                  <option value="old">오래된순</option>
+                  <option value="view">조회순</option>
                 </select>
               </form>
             </div>
@@ -75,10 +84,49 @@
             <!-- 우측 버튼 영역 DIV -->
             <div class="content-top-right">
               <!-- 탭 편집 DIV-->
-              <button type="button" class="btn">탭편집</button>
+              <a href="" class="btn btn-sm btn-mr">
+                <span class="btn-icons btn-icon-edit-tab"></span>
+                탭편집
+              </a>
 
               <!-- 글쓰기 DIV-->
-              <button type="button" class="btn">굴파기</button>
+              <a href="" class="btn btn-sm btn-mr">
+                <span class="btn-icons btn-icon-dig"></span>
+                굴파기
+              </a>
+            </div>
+          </div>
+
+          <!-- 탭 버튼영역 DIV -->
+          <div class="content-tab hide-scrollbar">
+            <div class="btn-sm tab-enable">
+              <a href="./index.html">전체</a>
+            </div>
+            <div class="btn-sm tab-disable">
+              <a href="./index.html">Tab 1</a>
+            </div>
+            <div class="btn-sm tab-disable">
+              <a href="./index.html">Tab 2</a>
+            </div>
+            <div class="btn-sm tab-disable">
+              <a href="./index.html">Tab 3</a>
+            </div>
+            <div class="btn-sm tab-disable">
+              <a href="./index.html">Tab 4</a>
+            </div>
+            <div class="btn-sm tab-disable">
+              <a href="./index.html">· · ·</a>
+            </div>
+          </div>
+
+          <!-- 메인 리스트 영역 -->
+          <div class="content-list">
+            <div class="item list-head">
+              <div>번호</div>
+              <div>제목</div>
+              <div>작성자</div>
+              <div>작성일</div>
+              <div>조회수</div>
             </div>
           </div>
         </div>
@@ -91,3 +139,5 @@
 </html>
 
 <script src="./js/common.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
