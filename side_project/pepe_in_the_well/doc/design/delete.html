@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/common.css" />
-    <link rel="stylesheet" href="./css/create.css" />
+    <link rel="stylesheet" href="./css/delete.css" />
 
-    <title>우물에 입주할 페페를 모집합니다</title>
+    <title>페페를 내쫒고 집을 철거시킵니다</title>
   </head>
   <body>
     <button aria-pressed="false">
@@ -54,76 +54,27 @@
           method="get"
           onsubmit="chkDelayModal(event)"
         >
-          <input type="hidden" name="content" id="hiddenContent" />
-
           <div class="main-middle">
-            <!-- 제목 영역 DIV -->
-            <div class="box box-select">
-              <select name="name">
-                <option value="none">일반</option>
-                <option value="1">Tab 1</option>
-                <option value="2">Tab 2</option>
-                <option value="3">Tab 3</option>
-                <option value="4">Tab 4</option>
-              </select>
+            <h2>페페굴 철거</h2>
+            <p>이것은 일반입니다. 여튼 그런겁니다</p>
+            <p>
+              철거시킨 굴은 다시 되돌릴수 없습니다. 정말로 철거시키겠습니까?
+            </p>
+            <div class="btn-bottom">
+              <button type="submit" class="btn btm-sm">철거</button>
             </div>
-
-            <div class="box box-title">
-              <input type="text" name="title" placeholder="제목" required />
-            </div>
-
-            <!-- 내용 영역 DIV -->
-            <div class="box box-content">
-              <!-- 내용 위쪽 아이콘 영역 DIV -->
-              <div class="text-icons">
-                <span class="btn-icons btn-icon-pepecon"></span>
-                <!-- 페페콘 팝업창 영역 DIV -->
-                <div class="pcon-body">
-                  <div class="pcon-select-window">
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                    <img src="./img/pcons/simulug.webp" class="pcon-image" />
-                  </div>
-                </div>
-              </div>
-              <!-- 내용글 영역 DIV -->
-              <div class="content-area">
-                <div class="text-content" contenteditable="true"></div>
-                <div class="placeholder">내용</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 하단 작성 버튼 DIV -->
-          <div class="main-bottom">
-            <button type="submit" class="btn btn-sm">입주</button>
           </div>
         </form>
-
-        <!-- <button id="modal-btn" class="button">Click Here</button> -->
 
         <!-- 딜레이용 모달 -->
         <div id="my-modal" class="modal">
           <div class="modal-content">
-            <!-- <div class="modal-header">
-              <span class="close">&times;</span>
-              <h2>제목</h2>
-            </div> -->
             <div class="modal-body">
               <div class="modal-section">
                 <div class="modal-img"></div>
-                <p>해당 굴에 입주할 페페가 들어오는중 입니다.</p>
+                <p>당신의 결정에 실망한 페페가 떠나갑니다</p>
               </div>
             </div>
-            <!-- <div class="modal-footer">
-              <h3>Modal Footer</h3>
-            </div> -->
           </div>
         </div>
       </div>
@@ -135,6 +86,6 @@
 </html>
 
 <script src="./js/common.js"></script>
-<script src="./js/create.js"></script>
+<script src="./js/delete.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

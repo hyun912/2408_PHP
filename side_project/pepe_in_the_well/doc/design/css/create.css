@@ -1,5 +1,6 @@
 .container {
   padding: 1.5rem;
+  border-bottom: none;
 }
 
 /* 위중앙 영역 */
@@ -78,6 +79,12 @@ input,
   height: 27px;
   margin-right: 5rem;
   cursor: pointer;
+  opacity: 80%;
+}
+
+.btn-icon-pepecon:hover {
+  opacity: 100%;
+  border: 1px solid #0000ff;
 }
 
 /* 팝업 포지션 잡기위한 바디 영역  */
@@ -115,12 +122,15 @@ input,
 /* 내용 영역 */
 .content-area {
   position: relative;
+  /* margin: 0; */
+  overflow-y: auto; /* 세로 스크롤 생성 */
 }
 /* 내부 입력 영역 */
 .text-content {
   font-size: 0.9rem;
   padding: 15px;
   outline: none;
+  white-space: pre-wrap; /* 줄바꿈을 유지 */
 }
 /* 플레이스 홀더용 */
 .placeholder {

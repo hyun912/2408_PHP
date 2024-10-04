@@ -1,0 +1,188 @@
+.container {
+  border-bottom: none;
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* 본문 ////////////////////////////////////////////////// */
+/*/////////////////////////////////////////////////////////*/
+
+.head {
+  /* 본문영역 기본 여백설정 */
+  padding: 4rem 1rem 0.1rem 1rem;
+}
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 위 버튼들 영역 */
+.head-top {
+  /* 버튼을 좌우측에 배치하기위해 플렉스 비트윈 사용 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 좌측 버튼 영역 */
+/* .head-top-left {
+} */
+.head-top-left > form {
+  /* 셀렉트폼을 같은줄에 놓기위해 인라인 사용 */
+  display: inline-block;
+}
+
+.head-top-left > form > select {
+  padding: 0.39rem 0.3rem 0.26rem;
+  height: 1.82rem;
+  outline: none;
+}
+
+.head-top-left > form > button[type="submit"] {
+  background-color: #ca2828;
+  color: #fff;
+}
+/* 호버시 진하게 */
+.head-top-left > form > button[type="submit"]:hover {
+  background-color: #b83014;
+}
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 우측 버튼 영역 */
+/* .head-top-right {
+} */
+/* 수정 아이콘 */
+.btn-icon-update {
+  background-image: url("../img/icons/update.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+/* 삭제 아이콘 */
+.btn-icon-delete {
+  background-image: url("../img/icons/delete.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* a버튼들 안의 아이콘 배치 */
+.btn-icons {
+  /* SPAN은 기본적으로 인라인 요소기 때문에 블록화해줌 */
+  display: inline-block;
+
+  /* 크기 및 위치 조정 */
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+/*/////////////////////////////////////////////////////////*/
+
+.title {
+  margin: 10px 0;
+}
+
+/* 제목 표기 영역 */
+.title-top {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #ddd;
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  text-align: left;
+  padding: 10px;
+  font-size: 0.9rem;
+
+  /* 초과제목 안보이게 */
+  overflow: hidden;
+  /* 초과시 ... */
+  text-overflow: ellipsis;
+  /* 개행 X */
+  white-space: nowrap;
+}
+
+/* 제목쪽에 탭이 존재할시 표시 */
+.list-tab {
+  /* SPAN은 기본적으로 인라인 요소기 때문에 블록화해줌 */
+  display: inline-block;
+  background-color: #42464f;
+  color: #fff;
+  padding: 2px 4px 2px 4px;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  margin-top: 0.2rem;
+  /* margin: 0; */
+}
+
+/* 즐겨찾기 아이콘 */
+.btn-icon-bookmark {
+  background-image: url("../img/icons/star.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: 0.28rem;
+
+  /* 다크모드 적용후에도 원본 유지를 위해 강제사용 */
+  filter: initial !important;
+}
+
+/* 제목 하단 상세내용 영역 */
+.title-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  padding: 5px;
+  font-size: 0.7rem;
+  border-bottom: 1px solid #bbb;
+}
+
+/* 좌측 상세 영역 */
+.title-bottom-left {
+  padding-top: 3px;
+}
+
+/* 작성자 인장 아이콘 */
+.list-icon-title-stamp {
+  background-image: url("../img/title_stamp.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  /* 다크모드 적용후에도 원본 유지를 위해 강제사용 */
+  filter: initial !important;
+}
+
+/* 우측 상세정보 영역 */
+/* .title-bottom-right {
+} */
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 본문 영역 */
+.content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 75vh;
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* 다크모드 관련설정 ///////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////*/
+
+/* 다크모드로 변경시 그에 맞춰 색상도 바꿔줘야함*/
+[data-theme="dark"] {
+  /* 아이콘들 흐려짐 방지 */
+  .btn-icons {
+    filter: invert(100%);
+  }
+
+  /* 제목 영역색 변경 */
+  .title-top {
+    background-color: #555;
+  }
+}
