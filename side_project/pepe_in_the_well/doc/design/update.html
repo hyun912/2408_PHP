@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/create.css" />
 
-    <title>우물에 입주할 페페를 모집합니다</title>
+    <title>입주한 페페의 내용을 수정합니다</title>
   </head>
   <body>
     <button aria-pressed="false">
@@ -62,14 +62,20 @@
               <select name="name">
                 <option value="none">일반</option>
                 <option value="1">Tab 1</option>
-                <option value="2">Tab 2</option>
+                <option value="2" selected>Tab 2</option>
                 <option value="3">Tab 3</option>
                 <option value="4">Tab 4</option>
               </select>
             </div>
 
             <div class="box box-title">
-              <input type="text" name="title" placeholder="제목" required />
+              <input
+                type="text"
+                name="title"
+                placeholder="제목"
+                value="대충 제목"
+                required
+              />
             </div>
 
             <!-- 내용 영역 DIV -->
@@ -94,7 +100,9 @@
               </div>
               <!-- 내용글 영역 DIV -->
               <div class="content-area">
-                <div class="text-content" contenteditable="true" required></div>
+                <div class="text-content" contenteditable="true" required>
+                  대충 내용
+                </div>
                 <div class="placeholder">내용</div>
               </div>
             </div>
@@ -102,30 +110,9 @@
 
           <!-- 하단 작성 버튼 DIV -->
           <div class="main-bottom">
-            <button type="submit" class="btn btn-sm">입주</button>
+            <button type="submit" class="btn btn-sm">수정</button>
           </div>
         </form>
-
-        <!-- <button id="modal-btn" class="button">Click Here</button> -->
-
-        <!-- 딜레이용 모달 -->
-        <div id="my-modal" class="modal">
-          <div class="modal-content">
-            <!-- <div class="modal-header">
-              <span class="close">&times;</span>
-              <h2>제목</h2>
-            </div> -->
-            <div class="modal-body">
-              <div class="modal-section">
-                <div class="modal-img"></div>
-                <p>해당 굴에 입주할 페페가 들어오는중 입니다.</p>
-              </div>
-            </div>
-            <!-- <div class="modal-footer">
-              <h3>Modal Footer</h3>
-            </div> -->
-          </div>
-        </div>
       </div>
 
       <!-- 우측 그리드 여백용 DIV -->

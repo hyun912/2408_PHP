@@ -22,6 +22,9 @@ body {
   min-height: 100vh;
   background: canvas;
   color: canvasText;
+
+  /* 문단을 맞추기위해 상하 스크롤바 활성*/
+  overflow-y: scroll;
 }
 
 /* a 태그 버튼용 */
@@ -160,8 +163,17 @@ main {
 [data-theme="dark"] {
   color-scheme: dark only;
 
+  /* 버튼 호버색 변경*/
+  .btn:hover {
+    background-color: #2e3136;
+  }
+
   button > svg {
     color: #000;
+  }
+
+  .container {
+    background-color: #222;
   }
 }
 

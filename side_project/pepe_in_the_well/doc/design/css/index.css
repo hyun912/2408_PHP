@@ -309,17 +309,18 @@
   justify-content: center;
 }
 
+/* 페이지 문단 영역 */
 .btn-page-bar {
   background-color: transparent;
   cursor: pointer;
   margin-top: 10px;
   width: 30px;
 }
-
+/* 페이지 활성화 영역  */
 .page-enable {
   pointer-events: none;
   background-color: #ddd;
-  border: 1px solid #666565;
+  border: 1px solid #555;
 }
 
 /*/////////////////////////////////////////////////////////*/
@@ -328,31 +329,27 @@
 
 /* 다크모드로 변경시 그에 맞춰 색상도 바꿔줘야함*/
 [data-theme="dark"] {
-  /* 버튼 호버색 변경*/
-  .btn:hover {
-    background-color: #2e3136;
-  }
-
   /* 아이콘들 흐려짐 방지 */
   .btn-icons {
     filter: invert(100%);
   }
 
-  /* 활성탭 영역 하단 외곽선 색맞춤 */
+  /* 활성탭 영역 하단 외곽선색 변경 */
   .tab-enable {
     box-shadow: 0 2px 0 0 #121212;
   }
 
-  /* 공지 영역 색맞춤 */
+  /* 공지 영역색 변경 */
   .list-notice {
     background-color: #555;
   }
 
-  /* 썸네일 이미지 배경 색맞춤 */
+  /* 썸네일 이미지 배경색 변경 */
   .thumb-preview {
     background-color: #121212;
   }
 
+  /* 활성화된 페이지색 변경 */
   .page-enable {
     border: 1px solid #dbdbdb;
     background-color: #444444;
