@@ -14,8 +14,8 @@ function chkDelayModal(event) {
   modal.style.display = "block";
   modalImg.appendChild(img); // 이미지 삽입
 
-  // 3.2초(3200ms) 딜레이 후 폼제출
+  // 딜레이 후 폼제출
   setTimeout(() => {
     event.target.submit();
-  }, 3200);
+  }, 3300);
 }

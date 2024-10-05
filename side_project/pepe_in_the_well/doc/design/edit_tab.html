@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/common.css" />
-    <link rel="stylesheet" href="./css/delete.css" />
-
-    <title>페페를 내쫒고 집을 철거시킵니다</title>
+    <link rel="stylesheet" href="./css/edit_tab.css" />
+    <title>Document</title>
   </head>
   <body>
     <button aria-pressed="false">
@@ -49,33 +48,14 @@
 
       <!-- 중앙 컨테이너 DIV -->
       <div class="container">
-        <form
-          action="./index.html"
-          method="get"
-          onsubmit="return chkDelayModal(event)"
-        >
-          <div class="main-middle">
-            <h2>페페굴 철거</h2>
-            <p>이것은 일반입니다. 여튼 그런겁니다</p>
-            <p>
-              철거시킨 굴은 다시 되돌릴수 없습니다. 정말로 철거시키겠습니까?
-            </p>
-            <div class="btn-bottom">
-              <button type="submit" class="btn btm-sm">철거</button>
-            </div>
-          </div>
-        </form>
-
-        <!-- 딜레이용 모달 -->
-        <div id="my-modal" class="modal">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="modal-section">
-                <div class="modal-img"></div>
-                <p>당신의 결정에 실망한 페페가 떠나갑니다</p>
-              </div>
-            </div>
-          </div>
+        <div>
+          <ul id="columns">
+            <li class="column" draggable="true"><div>A</div></li>
+            <li class="column" draggable="true"><div>B</div></li>
+            <li class="column" draggable="true"><div>C</div></li>
+            <li class="column" draggable="true"><div>D</div></li>
+            <li class="column" draggable="true"><div>E</div></li>
+          </ul>
         </div>
       </div>
 
@@ -86,6 +66,6 @@
 </html>
 
 <script src="./js/common.js"></script>
-<script src="./js/delete.js"></script>
+<script src="./js/edit_tab.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
