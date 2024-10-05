@@ -48,14 +48,68 @@
 
       <!-- 중앙 컨테이너 DIV -->
       <div class="container">
-        <div>
-          <ul id="columns">
-            <li class="column" draggable="true"><div>A</div></li>
-            <li class="column" draggable="true"><div>B</div></li>
-            <li class="column" draggable="true"><div>C</div></li>
-            <li class="column" draggable="true"><div>D</div></li>
-            <li class="column" draggable="true"><div>E</div></li>
-          </ul>
+        <div class="mainWrapper">
+          <div class="element">
+            <div class="leftSide">
+              <div class="title">
+                <span class="tab-icon"></span>
+              </div>
+              <div class="description">
+                <input type="hidden" id="id" value="1" />
+                <input type="text" id="name" value="Tab 1" required />
+              </div>
+            </div>
+          </div>
+          <div class="element">
+            <div class="leftSide">
+              <div class="title">
+                <span class="tab-icon"></span>
+              </div>
+              <div class="description">
+                <input type="hidden" id="id" value="2" />
+                <input type="text" id="name" value="Tab 2" required />
+              </div>
+            </div>
+          </div>
+          <div class="element">
+            <div class="leftSide">
+              <div class="title">
+                <span class="tab-icon"></span>
+              </div>
+              <div class="description">
+                <input type="hidden" id="id" value="3" />
+                <input type="text" id="name" value="Tab 3" required />
+              </div>
+            </div>
+          </div>
+          <div class="element">
+            <div class="leftSide">
+              <div class="title">
+                <span class="tab-icon"></span>
+              </div>
+              <div class="description">
+                <input type="hidden" id="id" value="4" />
+                <input type="text" id="name" value="Tab 4" required />
+              </div>
+            </div>
+          </div>
+          <div class="element">
+            <div class="leftSide">
+              <div class="title">
+                <span class="tab-icon"></span>
+              </div>
+              <div class="description">
+                <input type="hidden" id="id" value="5" />
+                <input type="text" id="name" value="Tab 5" required />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main-bottom">
+          <form action="./index.html" onsubmit="return chkFormSubmit(event)">
+            <input type="hidden" id="save_tab" value="" />
+            <button type="submit" class="btn btn-sm">저장</button>
+          </form>
         </div>
       </div>
 

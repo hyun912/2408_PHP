@@ -1,74 +1,149 @@
-var dragSrcEl = null;
+const step = 120;
 
-function handleDragStart(e) {
-  // 대상(이) 요소가 소스 노드입니다.
-  dragSrcEl = this;
+const items = document.querySelectorAll(".element");
+const saveTab = document.querySelector("#save_tab");
 
-  e.dataTransfer.effectAllowed = "move";
-  e.dataTransfer.setData("text/html", this.outerHTML);
+var itemsArray = []; //0 - obj; 1 - top
+var selectedItem = null;
+var initY = null;
+var selectedInitialTop = null;
 
-  this.classList.add("dragElem");
+function chkFormSubmit(event) {
+  event.preventDefault(); // 일단 폼전송 멈춤
+
+  // 필요한값 id, number, name
+  // id : itemId
+  // number : index + 1
+  // name : itemInput.value
+
+  const arrTabs = []; // 빈 배열 선언 및 초기화
+
+  items.forEach(function (item, index) {
+    var itemId = item.querySelector("#id"); // ID
+    var itemNum = item.id; // 로직이 여기 id를 순번으로 놓음
+    var itemName = item.querySelector("#name"); // NAME
+
+    var itemArr = {
+      id: itemId.value,
+      number: parseInt(itemNum) + 1, // + 1을 넣는 이유는 시작이 0이라서 1부터 시작하도록 설정함
+      name: itemName.value,
+    }; // 넣을 배열변수 만들고
+
+    arrTabs.push(itemArr); // 전송할 배열에 집어넣음
+  });
+
+  saveTab.value = JSON.stringify(arrTabs); // 다된걸 인코딩헤서 집어넣고
+
+  // console.log(saveTab.value);
+
+  event.target.submit(); // 그대로 전송
 }
-function handleDragOver(e) {
-  if (e.preventDefault) {
-    e.preventDefault(); // 필요합니다. 드롭할 수 있습니다.
+
+function swapItems(index, currY) {
+  var pre = index - 1;
+  var nxt = index + 1;
+  var currMiddle =
+    selectedItem.getBoundingClientRect().top +
+    (selectedItem.getBoundingClientRect().bottom -
+      selectedItem.getBoundingClientRect().top) /
+      2;
+
+  if (currY - initY < 0) {
+    //moving up: step++; pre
+    if (
+      pre > -1 &&
+      itemsArray[pre][0].getBoundingClientRect().top +
+        (itemsArray[pre][0].getBoundingClientRect().bottom -
+          itemsArray[pre][0].getBoundingClientRect().top) /
+          2 -
+        currMiddle >
+        0
+    ) {
+      itemsArray[pre][0].style.top = itemsArray[pre][1] + step + "px"; //move down by step
+      //update in array
+      itemsArray[pre][1] += step; //update top
+      itemsArray[index][1] -= step; //update top in current
+      //swap
+      var tmp = itemsArray[index]; //save curr
+      var tmpID = itemsArray[index][0].id;
+      //swap ids
+      itemsArray[index][0].id = itemsArray[pre][0].id;
+      itemsArray[pre][0].id = tmpID;
+      //swap arr items
+      itemsArray[index] = itemsArray[pre];
+      itemsArray[pre] = tmp;
+      //reset offset
+      selectedInitialTop += currY - initY;
+      initY = currY;
+    }
+  } else {
+    //moving down: step--; nxt
+    if (
+      nxt < itemsArray.length &&
+      itemsArray[nxt][0].getBoundingClientRect().top +
+        (itemsArray[nxt][0].getBoundingClientRect().bottom -
+          itemsArray[nxt][0].getBoundingClientRect().top) /
+          2 -
+        currMiddle <
+        0
+    ) {
+      itemsArray[nxt][0].style.top = itemsArray[nxt][1] - step + "px"; //move up by step
+      //update in array
+      itemsArray[nxt][1] -= step; //update top
+      itemsArray[index][1] += step; //update top in current
+      //swap
+      var tmp = itemsArray[index]; //save curr
+      var tmpID = itemsArray[index][0].id;
+      //swap ids
+      itemsArray[index][0].id = itemsArray[nxt][0].id;
+      itemsArray[nxt][0].id = tmpID;
+      //swap arr items
+      itemsArray[index] = itemsArray[nxt];
+      itemsArray[nxt] = tmp;
+      //reset offset
+      selectedInitialTop += currY - initY;
+      initY = currY;
+    }
   }
-  this.classList.add("over");
-
-  e.dataTransfer.dropEffect = "move"; // DataTransfer 개체의 섹션을 참조하십시오.
-
-  return false;
 }
 
-function handleDragEnter(e) {
-  // this/e.target 이 현재 호버 타겟입니다.
-}
+//init
+items.forEach(function (item, index) {
+  item.style.top = "0px";
+  item.id = index; //id asc order
+  itemsArray.push([
+    item,
+    parseInt(item.style.top.substring(0, item.style.top.length - 2), 10),
+  ]); //save obj and top css property
+  //add event
+  item.addEventListener("mousedown", function (e) {
+    selectedItem = e.target;
+    initY = e.clientY;
+    selectedInitialTop = parseInt(
+      e.target.style.top.substring(0, e.target.style.top.length - 2),
+      10
+    ); //value of top css property
+    //console.log(e);
+    e.target.style.zIndex = 10;
+    e.target.classList.add("moving");
+  });
+});
 
-function handleDragLeave(e) {
-  this.classList.remove("over"); // this/e.target은 이전 대상 요소입니다.
-}
-
-function handleDrop(e) {
-  // this/e.target은 현재 대상 요소입니다.
-
-  if (e.stopPropagation) {
-    e.stopPropagation(); // 일부 브라우저의 리디렉션을 중지합니다.
+window.addEventListener("mouseup", function (e) {
+  if (selectedItem != null) {
+    selectedItem.classList.remove("moving");
+    selectedItem.style.zIndex = 0;
+    selectedItem.style.top = itemsArray[selectedItem.id][1] + "px";
+    selectedItem = null;
+    initY = null;
+    selectedInitialTop = null;
   }
+});
 
-  // 드래그하는 것과 동일한 열을 떨어뜨려도 아무것도 하지 마세요.
-  if (dragSrcEl != this) {
-    // 소스 열의 HTML을 삭제한 열의 HTML로 설정합니다.
-
-    //alert(this.outerHTML);
-    //dragSrcEl.innerHTML = this.innerHTML;
-    //this.innerHTML = e.dataTransfer.getData('text/html');
-    this.parentNode.removeChild(dragSrcEl);
-    var dropHTML = e.dataTransfer.getData("text/html");
-    this.insertAdjacentHTML("beforebegin", dropHTML);
-    var dropElem = this.previousSibling;
-    addDnDHandlers(dropElem);
+window.addEventListener("mousemove", function (e) {
+  if (selectedItem != null) {
+    var pos = e.clientY - initY + selectedInitialTop; //calc new offset
+    selectedItem.style.top = pos + "px"; //rewrite top
+    swapItems(parseInt(e.target.id, 10), e.clientY, null); //check swapping
   }
-  this.classList.remove("over");
-  return false;
-}
-
-function handleDragEnd(e) {
-  // this/e.target이 소스 노드입니다.
-  this.classList.remove("over");
-
-  /*[].forEach.call(cols, function (col) {
-    col.classList.remove('over');
-  });*/
-}
-
-function addDnDHandlers(elem) {
-  elem.addEventListener("dragstart", handleDragStart, false);
-  elem.addEventListener("dragenter", handleDragEnter, false);
-  elem.addEventListener("dragover", handleDragOver, false);
-  elem.addEventListener("dragleave", handleDragLeave, false);
-  elem.addEventListener("drop", handleDrop, false);
-  elem.addEventListener("dragend", handleDragEnd, false);
-}
-
-var cols = document.querySelectorAll("#columns .column");
-[].forEach.call(cols, addDnDHandlers);
+});
