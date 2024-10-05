@@ -107,6 +107,25 @@ input {
   justify-content: flex-end;
   margin-right: 2rem;
 }
-/* .main-bottom > button[type="submit"] {
-  padding: 0.4rem 0.6rem;
-} */
+
+/*/////////////////////////////////////////////////////////*/
+/* 다크모드 관련설정 ///////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////*/
+
+/* 다크모드로 변경시 그에 맞춰 색상도 바꿔줘야함*/
+[data-theme="dark"] {
+  .element {
+    background-color: #222;
+    border: 1px solid #42494c;
+    border-top: 2px solid #42494c;
+  }
+
+  .element:hover {
+    background-color: #2e3136;
+  }
+
+  input {
+    border: 1px solid #42494c;
+    background-color: #42494c;
+  }
+}
