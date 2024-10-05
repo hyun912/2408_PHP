@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  /* background: linear-gradient(to bottom left, #194871, #020d1e); */
+  /* width: 100vw; */
+  /* height: 100vh; */
+  display: grid;
+  grid-template-rows: 1fr 50px;
+  /* align-items: center; */
+  /* justify-content: center; */
+  overflow: hidden;
+}
+
+.mainWrapper {
+  display: flex;
+  /* width: calc(100% - 50px); */
+  /* padding: 10px; */
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem 0.5rem 2rem;
+}
+
+.element {
+  border: 1px solid #bbb;
+  border-top: 2px solid #bbb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin: 0 0 20px;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 0 0 black;
+  cursor: move;
+}
+
+.moving {
+  transition: none;
+}
+
+.element:hover {
+  transform: scale(1.01);
+  /* box-shadow: 0 8px 20px 0px #00000085; */
+  background-color: #ddd;
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+.title,
+.description {
+  border-radius: 7px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  /* border: 1px solid #bbb; */
+  background-color: transparent;
+  width: 2.5rem;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.title > .tab-icon {
+  background-image: url("../img/icons/move_tab.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  width: 20px;
+  height: 20px;
+}
+
+.description,
+input {
+  width: 100%;
+  height: 40px;
+}
+
+input {
+  border: 1px solid #bbb;
+  border-radius: 7px;
+  padding: 10px;
+  outline: none;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* 하단 버튼 영역 */
+.main-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* 다크모드 관련설정 ///////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////*/
+
+/* 다크모드로 변경시 그에 맞춰 색상도 바꿔줘야함*/
+[data-theme="dark"] {
+  .element {
+    background-color: #222;
+    border: 1px solid #42494c;
+    border-top: 2px solid #42494c;
+  }
+
+  .element:hover {
+    background-color: #2e3136;
+  }
+
+  input {
+    border: 1px solid #42494c;
+    background-color: #42494c;
+  }
+}
