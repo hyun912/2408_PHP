@@ -54,30 +54,30 @@ function outsideClick(event) {
 function chkDelayModal(event) {
   event.preventDefault(); // 일단 폼전송 멈춤
 
-  hideInput.value = contentDiv.innerHTML;
-  console.log(hideInput.value);
-  event.target.submit();
+  // hideInput.value = contentDiv.innerHTML;
+  // console.log(hideInput.value);
+  // event.target.submit();
 
-  // if (contentDiv.innerHTML === "") {
-  //   // 내용이 비었으면
-  //   alert("내용을 입력헤주세요."); // 경고문 출력
-  // } else {
-  //   // 적은 내용을 숨겨진 input에 담음
-  //   hideInput.value = contentDiv.innerHTML;
+  if (contentDiv.innerHTML === "") {
+    // 내용이 비었으면
+    alert("내용을 입력헤주세요."); // 경고문 출력
+  } else {
+    // 적은 내용을 숨겨진 input에 담음
+    hideInput.value = contentDiv.innerHTML;
 
-  //   // 이미지 생성
-  //   const img = new Image();
-  //   img.src = "/img/pcons/coming_pepe.gif";
+    // 이미지 생성
+    const img = new Image();
+    img.src = "/img/pcons/coming_pepe.gif";
 
-  //   // 모달 보여줌
-  //   modal.style.display = "block";
-  //   modalImg.appendChild(img); // 이미지 삽입
+    // 모달 보여줌
+    modal.style.display = "block";
+    modalImg.appendChild(img); // 이미지 삽입
 
-  //   // 3초(3000ms) 딜레이 후 폼제출
-  //   setTimeout(() => {
-  //     event.target.submit();
-  //   }, 3000);
-  // }
+    // 3초(3000ms) 딜레이 후 폼제출
+    setTimeout(() => {
+      event.target.submit();
+    }, 3000);
+  }
 }
 
 // 포커스 위치에 이미지를 삽입하는 함수

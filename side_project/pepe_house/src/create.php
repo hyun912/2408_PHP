@@ -33,7 +33,7 @@ require_once(MY_PATH_MODEL_CREATE);
           <!-- 탭 선택 영역 DIV -->
           <div class="main-middle">
             <div class="box box-select">
-              <select name="tab_id" require>
+              <select name="tab_id">
                 <option value="">일반</option>
                 <?php foreach ($result_tab as $item) { ?>
                   <option value="<?php echo $item['id'] ?>">

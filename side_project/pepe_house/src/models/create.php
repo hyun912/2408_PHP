@@ -2,9 +2,8 @@
 
 $conn = null;
 
-if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
-    try {
-
+try {
+    if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
         $conn = my_db_conn();
 
         $arr_preare = [
@@ -40,20 +39,18 @@ if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
 
         header("Location: /"); // index로 이동
         exit;
-        
-    } catch(Throwable $th) {
-        if(!is_null($conn)) {
-            $conn->rollBack();
-        }
-        // echo $th->getMessage();
+    }else {
+        $conn = my_db_conn();
 
-        require_once(MY_PATH_ERROR);
-        exit;
+        $result_tab = my_tab_select_name($conn); // 탭 출력용
+        $result_pcon = my_pcon_select_name($conn); // 페페콘 출력용
     }
-}else {
+} catch(Throwable $th) {
+    if(!is_null($conn)) {
+        $conn->rollBack();
+    }
+    // echo $th->getMessage();
 
-    $conn = my_db_conn();
-
-    $result_tab = my_tab_select_name($conn); // 탭 출력용
-    $result_pcon = my_pcon_select_name($conn); // 페페콘 출력용
+    require_once(MY_PATH_ERROR);
+    exit;
 }

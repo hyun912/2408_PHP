@@ -125,6 +125,25 @@ function my_board_select_pagination(PDO $conn, array $arr_param)
     return $stmt->fetchAll();
 }
 
+/**
+ * 공지사항수 체크용
+ */
+function my_board_notice_total_count(PDO $conn)
+{
+    $sql =
+        " SELECT "
+        . "       COUNT(*) AS cnt "
+        . " FROM "
+        . "      boards "
+        . " WHERE "
+        . "       deleted_at IS NULL "
+        . "   AND notice = '1' ";
+
+    $stmt = $conn->query($sql);
+    $result = $stmt->fetch();
+
+    return $result["cnt"];
+}
 
 /**
  * 공지사항 출력용
@@ -227,6 +246,57 @@ function my_board_insert(PDO $conn, array $arr_param) {
 
     if($stmt->rowCount() !== 1) {
         throw new Exception("Insert Count Error : boards");
+    }
+
+    return true;
+}
+
+/**
+ * borders Detail Select 처리
+ */
+function my_board_select_id(PDO $conn, array $arr_param) {
+    $sql =
+        " SELECT "
+        ."       * "
+        ." FROM "
+        ."      boards "
+        ." WHERE "
+        ."      id = :id "
+        ."  AND deleted_at IS NULL "
+    ;
+
+    $stmt = $conn->prepare($sql);
+    
+    if(!$stmt->execute($arr_param)) {
+        throw new Exception("ID Selete Query Error : boards");
+    }
+
+    return $stmt->fetch();
+}
+
+
+/**
+ * 디테일 전환 작업 업데이트
+ */
+function my_board_work_update(PDO $conn, array $arr_param) {
+    $sql =
+        " UPDATE boards "
+        ." SET "
+        ."     bookmark = :bookmark "
+        ."     ,notice = :notice "
+        ."     ,updated_at = NOW() "
+        ." WHERE "
+        ."       id = :id "
+    ;
+
+    $stmt = $conn->prepare($sql);
+
+    if(!$stmt->execute($arr_param)) {
+        throw new Exception("Update Query Error : boards");
+    }
+
+    if($stmt->rowCount() !== 1) {
+        throw new Exception("Update Count Error : boards");
     }
 
     return true;
