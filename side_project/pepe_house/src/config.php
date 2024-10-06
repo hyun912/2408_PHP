@@ -19,5 +19,5 @@ define("MY_PATH_MODEL_INDEX", MY_PATH_ROOT . "models/index.php"); // Model Index
 
 
 /* 로직 설정 */
-define("MY_LIST_COUNT", 8); // 표시할 게시글 수
+define("MY_LIST_COUNT", 10); // 표시할 게시글 수
 define("MY_PAGE_BUTTON_COUNT", 10); // 밑에 페이지 버튼수

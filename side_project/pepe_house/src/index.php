@@ -105,7 +105,12 @@ require_once(MY_PATH_MODEL_INDEX);
                             tab-disable
                         <?php } ?>
                     ">
-                        <a href="/index.php?category=<?php echo $item["name"] ?>">
+                        <a href="/index.php?category=<?php echo $item["name"];
+                            if (isset($mode_best)) { ?>&mode=best<?php }
+                            if (isset($enb_sort)) { ?>&sort=<?php echo $enb_sort; }
+                            if (isset($search_target)) { ?>&target=<?php echo $search_target; }
+                            if (isset($search_keyword)) { ?>&keyword=<?php echo $search_keyword; }
+                        ?>">
                             <?php echo $item["name"] ?>
                         </a>
                     </div>
