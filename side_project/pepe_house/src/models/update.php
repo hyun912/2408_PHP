@@ -9,12 +9,12 @@ try{
 
     $id = isset($_POST["id"]) ? (int)$_POST["id"] : 0;
 
-    $arr_preare["id"] = $id;
-    $arr_preare["title"] = $_POST["title"];
-    $arr_preare["content"] = $_POST["content"];
+    $arr_prepare["id"] = $id;
+    $arr_prepare["title"] = $_POST["title"];
+    $arr_prepare["content"] = $_POST["content"];
 
     if(isset($_POST["tab_id"])) {
-        $arr_preare["tab_id"] = (int)$_POST["tab_id"];
+        $arr_prepare["tab_id"] = (int)$_POST["tab_id"];
     }
 
     // 첫번째 페페콘 추출
@@ -28,12 +28,12 @@ try{
     }
 
     if(isset($fileName)) { // 내용에 추출된 페페콘이 있을경우
-        $arr_preare["pcon_id"] = (int)my_pcon_get_id_by_name($conn, $fileName)["id"]; // pcon_id 가져옴
+        $arr_prepare["pcon_id"] = (int)my_pcon_get_id_by_name($conn, $fileName)["id"]; // pcon_id 가져옴
     }
 
     $conn->beginTransaction();
 
-    my_board_update($conn, $arr_preare);
+    my_board_update($conn, $arr_prepare);
 
     $conn->commit();
 

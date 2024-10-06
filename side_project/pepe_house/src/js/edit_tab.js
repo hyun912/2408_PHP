@@ -1,7 +1,7 @@
 const step = 120;
 
 const items = document.querySelectorAll(".element");
-const saveTab = document.querySelector("#save_tab");
+var saveTab = document.querySelector("#save_tab");
 
 var itemsArray = []; //0 - obj; 1 - top
 var selectedItem = null;

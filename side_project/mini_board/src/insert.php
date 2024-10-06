@@ -9,14 +9,14 @@
 
             $conn = my_db_conn();
 
-            $arr_preare = [
+            $arr_prepare = [
                 "title" => $_POST["title"]
                 , "content" => $_POST["content"]
             ];
 
             $conn->beginTransaction();
 
-            my_board_insert($conn, $arr_preare);
+            my_board_insert($conn, $arr_prepare);
 
             $conn->commit();
 

@@ -6,13 +6,13 @@ try {
     if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
         $conn = my_db_conn();
 
-        $arr_preare = [
+        $arr_prepare = [
             "title" => $_POST["title"]
             , "content" => $_POST["content"]
         ];
 
         if(isset($_POST["tab_id"]) && (int)$_POST["tab_id"] !== 0) {
-            $arr_preare["tab_id"] = (int)$_POST["tab_id"];
+            $arr_prepare["tab_id"] = (int)$_POST["tab_id"];
         }
 
         // 첫번째 페페콘 추출
@@ -26,12 +26,12 @@ try {
         }
 
         if(isset($fileName)) { // 내용에 추출된 페페콘이 있을경우
-            $arr_preare["pcon_id"] = (int)my_pcon_get_id_by_name($conn, $fileName)["id"]; // pcon_id 가져옴
+            $arr_prepare["pcon_id"] = (int)my_pcon_get_id_by_name($conn, $fileName)["id"]; // pcon_id 가져옴
         }
         
         $conn->beginTransaction();
 
-        my_board_insert($conn, $arr_preare);
+        my_board_insert($conn, $arr_prepare);
 
         $conn->commit();
 
@@ -44,7 +44,7 @@ try {
         $result_pcon = my_pcon_select_name($conn); // 페페콘 출력용
     }
 } catch(Throwable $th) {
-    if(!is_null($conn)) {
+    if(!is_null($conn) && $conn->inTransaction()) {
         $conn->rollBack();
     }
     // echo $th->getMessage();

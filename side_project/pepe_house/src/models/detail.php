@@ -8,7 +8,7 @@ try {
     if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
       $conn = my_db_conn();
 
-      $id = isset($_POST["no"]) ? (int)$_POST["no"] : 0;
+      $id = isset($_POST["id"]) ? (int)$_POST["id"] : 0;
 
       $arr_prepare["id"] = $id;
 

@@ -19,6 +19,8 @@ define("MY_PATH_MODEL_INDEX", MY_PATH_ROOT . "models/index.php"); // Model Index
 define("MY_PATH_MODEL_CREATE", MY_PATH_ROOT . "models/create.php"); // Model Create
 define("MY_PATH_MODEL_DETAIL", MY_PATH_ROOT . "models/detail.php"); // Model Detail
 define("MY_PATH_MODEL_UPDATE", MY_PATH_ROOT . "models/update.php"); // Model Update
+define("MY_PATH_MODEL_DELETE", MY_PATH_ROOT . "models/delete.php"); // Model Delete
+define("MY_PATH_MODEL_EDIT_TAB", MY_PATH_ROOT . "models/edit_tab.php"); // Model Edit Tab
 
 
 /* 로직 설정 */

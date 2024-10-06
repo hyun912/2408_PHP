@@ -28,7 +28,7 @@
             <div class="head-top-left">
               <!-- 전체글 버튼 DIV -->
               <form action="/detail.php" method="POST">
-                <input type="hidden" name="no" value="<?php echo (int)$result["id"] ?>">
+                <input type="hidden" name="id" value="<?php echo (int)$result["id"] ?>">
 
                 <select name="work" class="btn-sm" required>
                   <option value="" selected>작업</option>
@@ -38,7 +38,7 @@
                   if($result["bookmark"] !== '1') { ?>
                     <option value="bookmark">즐겨찾기</option>
                   <?php } 
-                  if($result["notice"] !== '1' && (int)my_board_notice_total_count($conn) < 3) { ?>
+                  if($result["notice"] !== '1' && (int)my_board_notice_total_count($conn) < 4) { ?>
                     <option value="notice">공지사항</option>
                   <?php } ?>
                 </select>
@@ -56,7 +56,7 @@
               </a>
 
               <!-- 삭제 버튼 DIV-->
-              <a href="/delete.php" class="btn btn-sm">
+              <a href="/delete.php?no=<?php echo (int)$result["id"] ?>" class="btn btn-sm">
                 <span class="btn-icons btn-icon-delete"></span>
                 철거
               </a>

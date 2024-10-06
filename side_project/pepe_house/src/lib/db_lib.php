@@ -5,8 +5,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/config.php");
 /**
  * DB Connection
  */
-function my_db_conn()
-{
+function my_db_conn() {
     $option = [
         PDO::ATTR_EMULATE_PREPARES      => false,
         PDO::ATTR_ERRMODE              => PDO::ERRMODE_EXCEPTION,
@@ -19,8 +18,7 @@ function my_db_conn()
 /**
  * borders Max Count 처리
  */
-function my_board_total_count(PDO $conn, array $arr_param)
-{
+function my_board_total_count(PDO $conn, array $arr_param) {
     $sql =
         " SELECT "
         . "       COUNT(*) AS cnt "
@@ -60,7 +58,7 @@ function my_board_total_count(PDO $conn, array $arr_param)
     $stmt = $conn->prepare($sql);
 
     if (!$stmt->execute($arr_param)) {
-        throw new Exception("Selete Query Error : boards");
+        throw new Exception("Count Query Error : boards");
     }
 
     $result = $stmt->fetch();
@@ -71,8 +69,7 @@ function my_board_total_count(PDO $conn, array $arr_param)
 /**
  *  borders Select Pagination 처리 
  */
-function my_board_select_pagination(PDO $conn, array $arr_param)
-{
+function my_board_select_pagination(PDO $conn, array $arr_param) {
 
     $sql =
         " SELECT "
@@ -119,7 +116,7 @@ function my_board_select_pagination(PDO $conn, array $arr_param)
     $stmt = $conn->prepare($sql);
 
     if (!$stmt->execute($arr_param)) {
-        throw new Exception("Selete Query Error : boards");
+        throw new Exception("Select Query Error : boards");
     }
 
     return $stmt->fetchAll();
@@ -128,8 +125,7 @@ function my_board_select_pagination(PDO $conn, array $arr_param)
 /**
  * 공지사항수 체크용
  */
-function my_board_notice_total_count(PDO $conn)
-{
+function my_board_notice_total_count(PDO $conn) {
     $sql =
         " SELECT "
         . "       COUNT(*) AS cnt "
@@ -148,8 +144,7 @@ function my_board_notice_total_count(PDO $conn)
 /**
  * 공지사항 출력용
  */
-function my_board_select_notice(PDO $conn)
-{
+function my_board_select_notice(PDO $conn) {
     $sql =
         " SELECT "
         . "       * "
@@ -166,8 +161,7 @@ function my_board_select_notice(PDO $conn)
 /**
  * Tabs select Number 처리
  */
-function my_tab_select_name(PDO $conn)
-{
+function my_tab_select_name(PDO $conn) {
     $sql =
         " SELECT "
         . "      id "
@@ -184,6 +178,34 @@ function my_tab_select_name(PDO $conn)
 }
 
 /**
+ * Edit Tab Update 처리
+ */
+function my_tab_update(PDO $conn, array $arr_param) {
+    $sql =
+        " UPDATE board_tabs "
+        ." SET "
+        ."      number = :number"
+        ."     ,name = :name"
+        ."     ,updated_at = NOW() "
+        ." WHERE "
+        ."          id = :id "
+    ;
+
+    $stmt = $conn->prepare($sql);
+    
+    if(!$stmt->execute($arr_param)) {
+        throw new Exception("Update Query Error : board_tabs");
+    }
+
+    if($stmt->rowCount() !== 1) {
+        throw new Exception("Update Count Error : board_tabs");
+    }
+
+    return true;
+
+}
+
+/**
  * Pcons select Name 처리
  */
 function my_pcon_select_name(PDO $conn) {
@@ -195,7 +217,7 @@ function my_pcon_select_name(PDO $conn) {
         . " WHERE "
         . "       deleted_at IS NULL "
         . " ORDER BY "
-        . "          id ASC";
+        . "          id ASC ";
 
     $stmt = $conn->query($sql);
     return $stmt->fetchAll();
@@ -276,11 +298,37 @@ function my_board_update(PDO $conn, array $arr_param) {
     $stmt = $conn->prepare($sql);
     
     if(!$stmt->execute($arr_param)) {
-        throw new Exception("Insert Query Error : boards");
+        throw new Exception("Update Query Error : boards");
     }
 
     if($stmt->rowCount() !== 1) {
-        throw new Exception("Insert Count Error : boards");
+        throw new Exception("Update Count Error : boards");
+    }
+
+    return true;
+}
+
+/**
+ * boards delete update 처리
+ */
+function my_board_delete(PDO $conn, array $arr_param) {
+    $sql =
+        " UPDATE boards "
+        ." SET "
+        ."     updated_at = NOW() "
+        ."     ,deleted_at = NOW() "
+        ." WHERE "
+        ."       id = :id "
+    ;
+
+    $stmt = $conn->prepare($sql);
+    
+    if(!$stmt->execute($arr_param)) {
+        throw new Exception("Delete Query Error : boards");
+    }
+
+    if($stmt->rowCount() !== 1) {
+        throw new Exception("Delete Count Error : boards");
     }
 
     return true;
@@ -377,7 +425,8 @@ function my_pcon_get_id_by_name(PDO $conn, string $name)
         . " FROM "
         . "      pcons "
         . " WHERE "
-        . "          name= " . "'".$name."'";
+        . "          name= " . "'".$name."' "
+        . "      AND deleted_at IS NULL ";
 
     $stmt = $conn->query($sql);
     return $stmt->fetch();
