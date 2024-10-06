@@ -151,6 +151,15 @@ input,
   padding: 0.4rem 0.6rem;
 }
 
+.out-side {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 0;
+}
+
 /*/////////////////////////////////////////////////////////*/
 /* 다크모드 관련설정 ///////////////////////////////////////*/
 /*/////////////////////////////////////////////////////////*/
@@ -158,7 +167,7 @@ input,
 /* 다크모드로 변경시 그에 맞춰 색상도 바꿔줘야함*/
 [data-theme="dark"] {
   /* 선택 옵션 글자색 변경 */
-  .box > select > option {
+  .box > select {
     color: #000;
   }
 

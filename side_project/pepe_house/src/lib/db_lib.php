@@ -151,15 +151,87 @@ function my_tab_select_name(PDO $conn)
 {
     $sql =
         " SELECT "
-        . "      name "
+        . "      id "
+        . "      ,name "
         . " FROM "
-        . "      board_tabs "
+        . "       board_tabs "
+        . " WHERE "
+        . "       deleted_at IS NULL "
         . " ORDER BY "
         . "          number ASC ";
 
     $stmt = $conn->query($sql);
     return $stmt->fetchAll();
 }
+
+/**
+ * Pcons select Name 처리
+ */
+function my_pcon_select_name(PDO $conn) {
+    $sql =
+        " SELECT "
+        . "      name "
+        . " FROM "
+        . "      pcons "
+        . " WHERE "
+        . "       deleted_at IS NULL "
+        . " ORDER BY "
+        . "          id ASC";
+
+    $stmt = $conn->query($sql);
+    return $stmt->fetchAll();
+}
+
+/**
+ * borders Insert 처리
+ */
+function my_board_insert(PDO $conn, array $arr_param) {
+
+    $sql = 'SET foreign_key_checks = 0'; // 냠냠
+    $conn->query($sql);
+
+    $sql = 
+        " INSERT INTO boards ( "
+        ."          title "
+        ."          ,content ";
+    
+    if(isset($arr_param["tab_id"])) {
+        $sql .= "   ,tab_id   ";
+    }
+
+    if(isset($arr_param["pcon_id"])) {
+        $sql .= "   ,pcon_id   ";
+    }
+
+    $sql .= " ) "
+        ." VALUES ( "
+        ."          :title "
+        ."          ,:content ";
+
+    if(isset($arr_param["tab_id"])) {
+        $sql .= "   ,:tab_id   ";
+    }
+
+    if(isset($arr_param["pcon_id"])) {
+        $sql .= "   ,:pcon_id   ";
+    }
+
+    $sql .= " ) ";
+    ;
+
+    $stmt = $conn->prepare($sql);
+    
+    if(!$stmt->execute($arr_param)) {
+        throw new Exception("Insert Query Error : boards");
+    }
+
+    if($stmt->rowCount() !== 1) {
+        throw new Exception("Insert Count Error : boards");
+    }
+
+    return true;
+}
+
 
 // tab_id를 써서 tab name을 가져옴
 function my_tab_get_name_by_id(PDO $conn, int $id)
@@ -186,6 +258,22 @@ function my_pcon_get_name_by_id(PDO $conn, int $id)
         . "      pcons "
         . " WHERE "
         . "          id= " . $id;
+
+    $stmt = $conn->query($sql);
+    return $stmt->fetch();
+}
+
+// pcon_id를 써서 pcon name을 가져옴
+function my_pcon_get_id_by_name(PDO $conn, string $name)
+{
+    $sql =
+        " SELECT "
+        . "      id "
+        . " FROM "
+        . "      pcons "
+        . " WHERE "
+        . "          name= " . "'".$name."'";
+
     $stmt = $conn->query($sql);
     return $stmt->fetch();
 }

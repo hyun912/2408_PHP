@@ -283,7 +283,6 @@ require_once(MY_PATH_MODEL_INDEX);
 
     <?php require_once(MY_PATH_FOOTER) ?>
 </body>
-
 </html>
 
 <script src="/js/index.js"></script>

@@ -74,7 +74,7 @@ try {
     $result_notice = my_board_select_notice($conn); // 공지 출력용
     $result_tab = my_tab_select_name($conn); // 탭 출력용
 } catch (Throwable $th) {
-    echo $th->getMessage();
-    // require_once(MY_PATH_ERROR);
+    // echo $th->getMessage();
+    require_once(MY_PATH_ERROR);
     exit; // 이 이후의 처리를 안함
 }

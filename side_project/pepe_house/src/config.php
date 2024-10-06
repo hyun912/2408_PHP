@@ -16,6 +16,7 @@ define("MY_PATH_ERROR", MY_PATH_ROOT . "error.php"); // Error page
 define("MY_PATH_HEADER", MY_PATH_ROOT . "header.php"); // Header page
 define("MY_PATH_FOOTER", MY_PATH_ROOT . "footer.php"); // Footer page
 define("MY_PATH_MODEL_INDEX", MY_PATH_ROOT . "models/index.php"); // Model Index
+define("MY_PATH_MODEL_CREATE", MY_PATH_ROOT . "models/create.php"); // Model Index
 
 
 /* 로직 설정 */
