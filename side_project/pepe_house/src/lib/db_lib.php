@@ -252,6 +252,41 @@ function my_board_insert(PDO $conn, array $arr_param) {
 }
 
 /**
+ * boards update 처리
+ */
+function my_board_update(PDO $conn, array $arr_param) {
+    $sql =
+        " UPDATE boards "
+        ." SET "
+        ."      title = :title"
+        ."     ,content = :content"
+        ."     ,updated_at = NOW() ";
+        
+    if(isset($arr_param["tab_id"])) {
+        $sql .= "   ,tab_id = :tab_id   ";
+    }
+
+    if(isset($arr_param["pcon_id"])) {
+        $sql .= "   ,pcon_id = :pcon_id ";
+    }
+
+        $sql .=  " WHERE "
+                ."       id = :id ";
+
+    $stmt = $conn->prepare($sql);
+    
+    if(!$stmt->execute($arr_param)) {
+        throw new Exception("Insert Query Error : boards");
+    }
+
+    if($stmt->rowCount() !== 1) {
+        throw new Exception("Insert Count Error : boards");
+    }
+
+    return true;
+}
+
+/**
  * borders Detail Select 처리
  */
 function my_board_select_id(PDO $conn, array $arr_param) {

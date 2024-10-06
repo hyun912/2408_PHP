@@ -18,6 +18,7 @@ define("MY_PATH_FOOTER", MY_PATH_ROOT . "footer.php"); // Footer page
 define("MY_PATH_MODEL_INDEX", MY_PATH_ROOT . "models/index.php"); // Model Index
 define("MY_PATH_MODEL_CREATE", MY_PATH_ROOT . "models/create.php"); // Model Create
 define("MY_PATH_MODEL_DETAIL", MY_PATH_ROOT . "models/detail.php"); // Model Detail
+define("MY_PATH_MODEL_UPDATE", MY_PATH_ROOT . "models/update.php"); // Model Update
 
 
 /* 로직 설정 */

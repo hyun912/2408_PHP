@@ -135,6 +135,7 @@ require_once(MY_PATH_MODEL_INDEX);
                 <?php
                 if (isset($result_notice)) {
                     foreach ($result_notice as $item) { ?>
+                    <a href="/detail.php?no=<?php echo $item['id'] ?>">
                         <div class="item list-board list-notice">
                             <div>공지</div>
                             <div><?php echo $item["title"] ?></div>
@@ -145,6 +146,7 @@ require_once(MY_PATH_MODEL_INDEX);
                             <div><?php echo date('Y-m-d', strtotime($item["created_at"])) ?></div>
                             <div><?php echo $item["view"] ?></div>
                         </div>
+                    </a>
                 <?php
                     }
                 } ?>

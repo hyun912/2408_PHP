@@ -27,8 +27,6 @@ try {
         }
       }
 
-      // var_dump($arr_prepare);
-
       $conn->beginTransaction();
 
       my_board_work_update($conn, $arr_prepare);
@@ -56,8 +54,8 @@ try {
     if(!is_null($conn) && $conn->inTransaction()) {
         $conn->rollBack();
     }
-    echo $th->getMessage();
+    // echo $th->getMessage();
 
-    // require_once(MY_PATH_ERROR);
+    require_once(MY_PATH_ERROR);
     exit;
 }

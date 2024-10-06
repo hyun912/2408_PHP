@@ -28,8 +28,6 @@ try {
         if(isset($fileName)) { // 내용에 추출된 페페콘이 있을경우
             $arr_preare["pcon_id"] = (int)my_pcon_get_id_by_name($conn, $fileName)["id"]; // pcon_id 가져옴
         }
-
-        // var_dump($arr_preare);
         
         $conn->beginTransaction();
 

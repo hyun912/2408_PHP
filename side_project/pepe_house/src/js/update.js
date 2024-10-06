@@ -6,6 +6,7 @@ const modalImg = document.querySelector(".modal-img");
 const pepeBody = document.querySelector(".pcon-body");
 const pepeBtn = document.querySelector(".btn-icon-pepecon");
 const pepeWindow = document.querySelector(".pcon-select-window");
+const outSide = document.querySelector(".out-side");
 
 // 내용 변수
 const contentDiv = document.querySelector(".text-content");
@@ -38,13 +39,15 @@ function hidePlaceholder() {
 // 페페콘 선택창 열기
 function openWindow() {
   pepeBody.style.display = "flex";
+  outSide.style.display = "flex";
 }
 
 // 외부 클릭시 닫을 함수
 function outsideClick(event) {
-  if (event.target != pepeBtn && event.target != pepeWindow) {
-    pepeBody.style.display = "none";
-  }
+  // if (event.target != pepeBtn || event.target != pepeWindow) {
+  pepeBody.style.display = "none";
+  outSide.style.display = "none";
+  // }
 }
 
 // form submit시 동작 함수
@@ -57,7 +60,6 @@ function chkDelayModal(event) {
   } else {
     // 적은 내용을 숨겨진 input에 담음
     hideInput.value = contentDiv.innerHTML;
-
     // 이상없으면 바로 제출
     event.target.submit();
   }
@@ -66,21 +68,30 @@ function chkDelayModal(event) {
 // 포커스 위치에 이미지를 삽입하는 함수
 function insertAtCaret(el, img) {
   el.focus();
-  const newParagraph = document.createElement("p"); // p 생성
+
+  // const newParagraph = document.createElement("p"); // p 생성
+  // const selection = window.getSelection();
+  // const range = selection.getRangeAt(0);
+
+  // newParagraph.appendChild(img); // p 내부에 이미지 삽입
+
+  // range.insertNode(newParagraph);
+  // range.insertNode(document.createTextNode(" ")); // 이미지 옆에 공백을 추가해 문자 입력 가능하게
+  // range.collapse(false); // 커서를 이미지 뒤로 이동
+  // selection.removeAllRanges(); // 드래그 상태 해제
+  // selection.addRange(range); // 새로운 범위 설정
+
+  const span = document.createElement("span"); // span 생성
   const selection = window.getSelection();
   const range = selection.getRangeAt(0);
 
-  newParagraph.appendChild(img); // p 내부에 이미지 삽입
-
-  range.insertNode(newParagraph);
+  span.appendChild(img); // span 내부에 이미지 삽입
+  range.insertNode(span); // 다 넣은걸 투입
   range.insertNode(document.createTextNode(" ")); // 이미지 옆에 공백을 추가해 문자 입력 가능하게
   range.collapse(false); // 커서를 이미지 뒤로 이동
   selection.removeAllRanges(); // 드래그 상태 해제
   selection.addRange(range); // 새로운 범위 설정
 }
-
-// contentDiv.addEventListener("keypress", function (event) {\
-// });
 
 imagePcons.forEach((pcon) => {
   pcon.addEventListener("click", () => {
@@ -99,4 +110,4 @@ contentDiv.addEventListener("focus", hidePlaceholder); // 포커싱하면 홀더
 contentDiv.addEventListener("blur", chkPlaceholder); // 포커스 때면 내용 비었는지 검사
 
 pepeBtn.addEventListener("click", openWindow); // 아이콘 클릭 이벤트
-window.addEventListener("click", outsideClick); // 외부 클릭 이벤트
+outSide.addEventListener("click", outsideClick); // 외부 클릭 이벤트

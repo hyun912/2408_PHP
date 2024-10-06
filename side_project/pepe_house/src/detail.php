@@ -49,13 +49,13 @@
 
             <!-- 우측 버튼 영역 DIV -->
             <div class="head-top-right">
-              <!-- 탭 편집 버튼 DIV-->
-              <a href="/update.php" class="btn btn-sm btn-mr">
+              <!-- 수정 버튼 DIV-->
+              <a href="/update.php?no=<?php echo (int)$result["id"] ?>" class="btn btn-sm btn-mr">
                 <span class="btn-icons btn-icon-update"></span>
                 수정
               </a>
 
-              <!-- 굴파기 버튼 DIV-->
+              <!-- 삭제 버튼 DIV-->
               <a href="/delete.php" class="btn btn-sm">
                 <span class="btn-icons btn-icon-delete"></span>
                 철거
@@ -79,13 +79,13 @@
             </div>
             <!-- 하단 상세 영역 DIV -->
             <div class="title-bottom">
-              <!-- 닉네임 영역 DIV -->
+              <!-- 좌측 닉네임 영역 DIV -->
               <div class="title-bottom-left">
                 <span class="btn-icons list-icon-title-stamp"></span>
                 익명의 페페
               </div>
 
-              <!-- 나머지 상세 영역 DIV -->
+              <!-- 우측 나머지 상세 영역 DIV -->
               <div class="title-bottom-right">
                 조회수 <?php echo $result["view"] ?> | 작성일 <?php echo date('Y-m-d', strtotime($result["created_at"])) ?> | 수정일 <?php echo date('Y-m-d', strtotime($result["updated_at"])) ?>
               </div>
