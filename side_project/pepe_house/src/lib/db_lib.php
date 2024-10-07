@@ -162,7 +162,8 @@ function my_board_select_notice(PDO $conn) {
         . "      boards "
         . " WHERE "
         . "       deleted_at IS NULL "
-        . "   AND notice = '1' ";
+        . "   AND notice = '1' "
+        . "LIMIT ".MY_NOTICE_LIMIT;
 
     $stmt = $conn->query($sql);
     return $stmt->fetchAll();
