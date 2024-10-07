@@ -47,6 +47,10 @@ try {
       $conn = my_db_conn();
   
       $arr_prepare["id"] = $id;
+
+      $conn->beginTransaction();
+      my_board_view_update($conn, $arr_prepare);
+      $conn->commit();
   
       $result = my_board_select_id($conn, $arr_prepare);
     }

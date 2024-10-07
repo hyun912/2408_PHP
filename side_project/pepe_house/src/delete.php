@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/delete.css" />
 
-    <title>페페를 내쫒고 집을 철거시킵니다</title>
+    <title>페페를 내쫒고 굴을 철거시킵니다</title>
   </head>
   <body>
 

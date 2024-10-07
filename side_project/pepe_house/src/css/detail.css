@@ -116,6 +116,18 @@
   /* margin: 0; */
 }
 
+/* 이글이 공지일경우 */
+.list-notice {
+  display: inline-block;
+  background-color: #42464f;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  margin-top: 0.2rem;
+  font-weight: bold;
+  padding: 3px 6px;
+}
+
 /* 즐겨찾기 아이콘 */
 .btn-icon-bookmark {
   background-image: url("../img/icons/star.webp");

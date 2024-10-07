@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/detail.css" />
 
-    <title>제목</title>
+    <title><?php echo $result["title"] ?></title>
   </head>
   <body>
 
@@ -38,7 +38,7 @@
                   if($result["bookmark"] !== '1') { ?>
                     <option value="bookmark">즐겨찾기</option>
                   <?php } 
-                  if($result["notice"] !== '1' && (int)my_board_notice_total_count($conn) < 4) { ?>
+                  if($result["notice"] !== '1' && (int)my_board_notice_total_count($conn) < MY_NOTICE_LIMIT) { ?>
                     <option value="notice">공지사항</option>
                   <?php } ?>
                 </select>
@@ -67,7 +67,11 @@
           <div class="title">
             <!-- 상단 제목 영역 DIV -->
             <div class="title-top">
-              <?php if($result["tab_id"] !== 0) { ?>
+              <?php if($result["notice"] !== '0') { ?>
+                <span class="list-notice btn-mr">
+                  페페공지
+                </span>
+              <?php }elseif($result["tab_id"] !== 0) { ?>
                 <span class="list-tab btn-mr">
                   <?php echo my_tab_get_name_by_id($conn, (int)$result["tab_id"])["name"] ?>
                 </span>

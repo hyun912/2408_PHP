@@ -385,6 +385,31 @@ function my_board_work_update(PDO $conn, array $arr_param) {
     return true;
 }
 
+/**
+ * 조회수 올림 처리
+ */
+function my_board_view_update(PDO $conn, array $arr_param) {
+    $sql =
+        " UPDATE boards "
+        ." SET "
+        ."     view = view + 1 "
+        // ."     ,updated_at = NOW() "
+        ." WHERE "
+        ."       id = :id ";
+
+    $stmt = $conn->prepare($sql);
+
+    if(!$stmt->execute($arr_param)) {
+        throw new Exception("View Update Query Error : boards");
+    }
+
+    if($stmt->rowCount() !== 1) {
+        throw new Exception("View Update Count Error : boards");
+    }
+
+    return true;
+}
+
 
 // tab_id를 써서 tab name을 가져옴
 function my_tab_get_name_by_id(PDO $conn, int $id)

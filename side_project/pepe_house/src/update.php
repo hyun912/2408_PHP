@@ -1,8 +1,8 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"] . "/config.php");
-require_once(MY_PATH_DB_LIB);
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/config.php");
+  require_once(MY_PATH_DB_LIB);
 
-require_once(MY_PATH_MODEL_UPDATE);
+  require_once(MY_PATH_MODEL_UPDATE);
 ?>
 
 
