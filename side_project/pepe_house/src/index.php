@@ -39,6 +39,7 @@
 
                     <!-- ★즐겨찾기 버튼 DIV -->
                     <a href="/index.php?mode=best<?php
+                        if (isset($enb_tab)) { ?>&category=<?php echo $enb_tab; }
                         if (isset($enb_sort)) { ?>&sort=<?php echo $enb_sort; }
                         if (isset($search_target)) { ?>&target=<?php echo $search_target; }
                         if (isset($search_keyword)) { ?>&keyword=<?php echo $search_keyword; } 
@@ -50,8 +51,12 @@
 
                     <!-- 정렬 셀렉트폼 DIV -->
                     <form action="/index.php" method="GET">
+                        
                         <?php if (isset($mode_best)) { ?>
                             <input type="hidden" name="mode" value="best">
+                        <?php } ?>
+                        <?php if (isset($enb_tab)) { ?>
+                            <input type="hidden" name="category" value="<?php echo $enb_tab ?>">
                         <?php } ?>
                         <?php if (isset($search_target)) { ?>
                             <input type="hidden" name="target" value="<?php echo $search_target ?>">
@@ -209,6 +214,9 @@
                         <?php if (isset($enb_sort)) { ?>
                             <input type="hidden" name="sort" value="<?php echo $enb_sort ?>">
                         <?php } ?>
+                        <?php if (isset($enb_tab)) { ?>
+                            <input type="hidden" name="category" value="<?php echo $enb_tab ?>">
+                        <?php } ?>
 
                         <!-- 검색 선택바 셀렉트 DIV -->
                         <select name="target" class="btn-sm">
@@ -234,6 +242,7 @@
                 <div class="pagination-bar">
                     <?php if ($page !== 1) { ?>
                         <a href="/index.php?page=<?php echo $prev_page_btn_num;
+                            if (isset($enb_tab)) { ?>&category=<?php echo $enb_tab; }
                             if (isset($mode_best)) { ?>&mode=best<?php }
                             if (isset($enb_sort)) { ?>&sort=<?php echo $enb_sort; }
                             if (isset($search_target)) { ?>&target=<?php echo $search_target; }
@@ -246,7 +255,13 @@
 
                     <?php
                     if (empty($result)) { ?>
-                        <a href="/">
+                        <a href="/index.php?page=1<?php
+                            if (isset($enb_tab)) { ?>&category=<?php echo $enb_tab; }
+                            if (isset($mode_best)) { ?>&mode=best<?php }
+                            if (isset($enb_sort)) { ?>&sort=<?php echo $enb_sort; }
+                            if (isset($search_target)) { ?>&target=<?php echo $search_target; }
+                            if (isset($search_keyword)) { ?>&keyword=<?php echo $search_keyword; }
+                        ?>">
                             <button class="btn btn-sm btn-page-bar page-enable">
                                 1
                             </button>
@@ -255,6 +270,7 @@
                         for ($i = $start_page_btn_num; $i <= $end_page_btn_num; $i++) { ?>
                             <?php if ($i < $end_page_btn_num || $end_page_btn_num === $max_page) { ?>
                                 <a href="/index.php?page=<?php echo $i;
+                                    if (isset($enb_tab)) { ?>&category=<?php echo $enb_tab; }
                                     if (isset($mode_best)) { ?>&mode=best<?php }
                                     if (isset($enb_sort)) { ?>&sort=<?php echo $enb_sort; }
                                     if (isset($search_target)) { ?>&target=<?php echo $search_target; }
@@ -270,6 +286,7 @@
 
                     <?php if ($max_page !== 0 && $page !== $max_page) { ?>
                         <a href="/index.php?page=<?php echo $next_page_btn_num;
+                            if (isset($enb_tab)) { ?>&category=<?php echo $enb_tab; }
                             if (isset($mode_best)) { ?>&mode=best<?php }
                             if (isset($enb_sort)) { ?>&sort=<?php echo $enb_sort; }
                             if (isset($search_target)) { ?>&target=<?php echo $search_target; }

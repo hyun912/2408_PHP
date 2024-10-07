@@ -73,7 +73,17 @@ function my_board_select_pagination(PDO $conn, array $arr_param) {
 
     $sql =
         " SELECT "
-        . "       * "
+        . "       boards.id "
+        . "       ,boards.tab_id "
+        . "       ,boards.pcon_id "
+        . "       ,boards.title "
+        . "       ,boards.content "
+        . "       ,boards.view "
+        . "       ,boards.bookmark "
+        . "       ,boards.notice "
+        . "       ,boards.created_at "
+        . "       ,boards.updated_at "
+        . "       ,boards.deleted_at "
         . " FROM "
         . "      boards ";
 

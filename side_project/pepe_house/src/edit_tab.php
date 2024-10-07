@@ -29,7 +29,7 @@
                 </div>
                 <div class="description">
                   <input type="hidden" id="id" value="<?php echo $item['id'] ?>" />
-                  <input type="text" id="name" value="<?php echo $item['name'] ?>" required />
+                  <input type="text" id="name" value="<?php echo $item['name'] ?>" maxlength="12" required />
                 </div>
               </div>
             </div>
