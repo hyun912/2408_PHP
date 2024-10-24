@@ -10,13 +10,14 @@
     "pepecon",
     "noice",
     "preare"
-  ]
+  ],
+  "liveServer.settings.port": 5501
   // "[php]": {
   //   "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
   //   "editor.formatOnSave": true
   // }
   // "prettier.printWidth": 100, // 한 행 당 최대 글자 수
-  // "prettier.singleQuote": true, // 작은 따옴표 ('') 사용 여부, false 시 큰 따옴표 ("")
+  // "prettier.singleQuote": false, // 작은 따옴표 ('') 사용 여부, false 시 큰 따옴표 ("")
   // "prettier.useTabs": false, // 여백을 tab으로 쓸지 여부, false 시 space 사용
   // "prettier.tabWidth": 2 // 여백 칸수 (스페이스 n번만큼의 크기)
 }
