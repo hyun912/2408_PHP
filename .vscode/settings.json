@@ -5,6 +5,9 @@
 	"liveServer.settings.port": 5501,
 	"[php]": {
 		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+		"editor.formatOnSave": false
+	},
+	"[javascript]": {
 		"editor.formatOnSave": true
 	},
 	"prettier.printWidth": 120, // 한 행 당 최대 글자 수
