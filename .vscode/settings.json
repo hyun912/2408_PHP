@@ -1,29 +1,18 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true,
-	"cSpell.words": [
-		"pepe",
-		"WEBP",
-		"βeta",
-		"pcon",
-		"pcons",
-		"pepecon",
-		"noice",
-		"preare"
-	],
-	"liveServer.settings.port": 5501,
-	"[php]": {
-		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
-		"editor.formatOnSave": false
-	},
-	"[javascript]": {
-		"editor.formatOnSave": true
-	}
-	// "prettier.printWidth": 120, // 한 행 당 최대 글자 수
-	// "prettier.singleQuote": true, // 작은 따옴표 ('') 사용 여부, false 시 큰 따옴표 ("")
-	// "prettier.useTabs": true, // 여백을 tab으로 쓸지 여부, false 시 space 사용
-	// "prettier.tabWidth": 2, // 여백 칸수 (스페이스 n번만큼의 크기)
-	// "prettier.semi": true, // 세미콜론
-	// "prettier.embeddedLanguageFormatting": "auto",
-	// "prettier.trailingComma": "none" // 문자열 후행쉼표
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "pepe",
+    "WEBP",
+    "βeta",
+    "pcon",
+    "pcons",
+    "pepecon",
+    "noice",
+    "preare"
+  ],
+  "liveServer.settings.port": 5501,
+  "prettier.documentSelectors": [
+    "**/*.{js,jsx,ts,tsx,vue,html,css,scss,less,json,md,mdx,graphql,yaml,yml,php}"
+  ]
 }
