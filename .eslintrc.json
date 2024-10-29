@@ -4,11 +4,7 @@
     "es2021": true,
     "jest": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
   "settings": {
     "react": {
       "version": "detect"
@@ -26,8 +22,8 @@
   "rules": {
     "brace-style": ["error", "1tbs", { "allowSingleLine": false }], // 코드 스타일
     "keyword-spacing": ["error", { "before": true, "after": true }],
-    "semi": ["error", "always"],
-    "indent": ["error", 2],
+    // "semi": ["error", "always"],
+    // "indent": ["error", 2],
     "comma-dangle": ["error", "always-multiline"],
     "no-multi-spaces": "error",
     "react/react-in-jsx-scope": "off",
@@ -35,6 +31,6 @@
     "quotes": ["error", "single"],
     "no-extra-semi": "error",
     "no-tabs": ["error", { "allowIndentationTabs": true }],
-    "prettier/prettier": "error"
+    "prettier/prettier": "error" // 프리티어 연동, 위에 plugins에도 넣어야함
   }
 }

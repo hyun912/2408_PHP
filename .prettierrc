@@ -1,5 +1,5 @@
 {
-  "arrowParens": "always",
+  "arrowParens": "avoid",
   "arrowParens_comment": "화살표 함수 괄호() 여부, always: 넣음 | avoid: 안넣음",
 
   "bracketSameLine": true,
@@ -12,7 +12,7 @@
   "semi_comment": "세미콜론 여부, true면 없는거 뒤에 자동으로 붙음",
 
   "singleQuote": false,
-  "singleQuote_comment": "따옴표 사용여부, true: 따옴표 | false: 쌍따옴표",
+  "singleQuote_comment": "홀따옴표 사용여부, true: 홀따옴표 | false: 쌍따옴표",
 
   "quoteProps": "as-needed",
   "quoteProps_comment": "객체 속성에 쿼테이션 적용 방식",
@@ -32,7 +32,7 @@
   "insertPragma": false,
   "insertPragma_comment": "미리 정의된 @format marker의 사용 여부",
 
-  "printWidth": 80,
+  "printWidth": 120,
   "printWidth_comment": "한 줄 최대 글자수, 기본 80 | 권장 120",
 
   "requirePragma": false,
@@ -47,6 +47,7 @@
   "embeddedLanguageFormatting": "auto",
   "embeddedLanguageFormatting_comment": "파일 안에 또다른 형식의 코드에도 Prettier를 적용할지 여부",
 
+  "disableLanguages": ["php"],
   "plugins": ["@prettier/plugin-php"],
   "braceStyle": "1tbs",
   "braceStyle_comment": "코드 스타일을 적용, per-cs:bsd | 1tbs: K&R"
