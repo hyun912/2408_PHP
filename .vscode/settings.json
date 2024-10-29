@@ -1,7 +1,7 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "cSpell.words": ["pepe", "WEBP", "βeta", "pcon", "pcons", "pepecon", "noice", "preare"],
+  "cSpell.words": ["pepe", "WEBP", "βeta", "pcon", "pcons", "pepecon", "noice", "preare", "Yoil", "YOIL"],
   "liveServer.settings.port": 5501,
   "[php]": {
     "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",

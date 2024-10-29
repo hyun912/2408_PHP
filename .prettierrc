@@ -1,6 +1,6 @@
 {
   "arrowParens": "avoid",
-  "arrowParens_comment": "화살표 함수 괄호() 여부, always: 넣음 | avoid: 안넣음",
+  "arrowParens_comment": "화살표 함수 괄호((x) => x) 여부, always: 넣음 | avoid: 안넣음",
 
   "bracketSameLine": true,
   "bracketSameLine_comment": "마지막 `>`를 다음 줄로 내릴지 여부 ",
@@ -32,7 +32,7 @@
   "insertPragma": false,
   "insertPragma_comment": "미리 정의된 @format marker의 사용 여부",
 
-  "printWidth": 120,
+  "printWidth": 100,
   "printWidth_comment": "한 줄 최대 글자수, 기본 80 | 권장 120",
 
   "requirePragma": false,
