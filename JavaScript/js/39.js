@@ -98,9 +98,9 @@ TITLE.classList.add("class-1", "class-2", "class-3"); // 추가
 TITLE.classList.remove("class-1", "class-3"); // 삭제
 
 //
-/////////////
-// .toggle //
-/////////////
+/////////////////////////
+// .toggle("클래스명") //
+////////////////////////
 // on/off 기능, 다시 입력하면 키거나 꺼짐
 TITLE.classList.toggle("toggle");
 TITLE.classList.toggle("toggle");
@@ -119,23 +119,23 @@ const NEW_LI = document.createElement("li");
 NEW_LI.textContent = "떡볶이";
 
 //
-//////////////////////////
+////////////////////////
 // .appendChild(노드) //
-//////////////////////////
+////////////////////////
 // 해당 부모 노드의 마지막 자식 노드 추가
 const FOODS = document.querySelector("#foods");
 FOODS.appendChild(NEW_LI);
 
 //
-//////////////////////////
+////////////////////////
 // .removeChild(노드) //
-//////////////////////////
+////////////////////////
 // 해당 부모 노드의 마지막 자식 노드 삭제
 FOODS.removeChild(NEW_LI);
 
 //
-////////////////////////////////////
+//////////////////////////////////////
 // .insertBefore(넣을노드, 기준노드) //
-////////////////////////////////////
+/////////////////////////////////////
 // 해당 부모 노드 자식인 기준노드 앞에 새 노드를 추가
 FOODS.insertBefore(NEW_LI, SICK);

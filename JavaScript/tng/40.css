@@ -1,0 +1,18 @@
+.modal-container {
+  width: 100px;
+  height: 100px;
+  background-color: #008000;
+  padding: 10px 0 0 10px;
+  position: absolute;
+}
+
+.modal-item {
+  width: 90px;
+  height: 90px;
+  background-color: #808080;
+  z-index: 1;
+}
+
+.display-none {
+  background-color: transparent;
+}

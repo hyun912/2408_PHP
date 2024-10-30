@@ -1,0 +1,23 @@
+.title-click {
+  color: red;
+}
+
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute; /* body는 무조건 relative가 적용되있음*/
+  top: 0;
+  left: 0;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal-item {
+  width: 300px;
+  height: 300px;
+  background-color: #fff;
+  margin: auto;
+}
