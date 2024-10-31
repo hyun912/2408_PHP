@@ -1,11 +1,26 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "cSpell.words": ["pepe", "WEBP", "βeta", "pcon", "pcons", "pepecon", "noice", "preare", "Yoil", "YOIL"],
+  "cSpell.words": [
+    "pepe",
+    "WEBP",
+    "βeta",
+    "pcon",
+    "pcons",
+    "pepecon",
+    "noice",
+    "preare",
+    "Yoil",
+    "YOIL",
+    "bcolor",
+    "Doki"
+  ],
   "liveServer.settings.port": 5501,
   "[php]": {
     "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
     "editor.formatOnSave": false
   },
-  "prettier.documentSelectors": ["**/*.{js,jsx,ts,tsx,vue,html,css,scss,less,json,md,mdx,graphql,yaml,yml,php}"]
+  "prettier.documentSelectors": [
+    "**/*.{js,jsx,ts,tsx,vue,html,css,scss,less,json,md,mdx,graphql,yaml,yml,php}"
+  ]
 }
