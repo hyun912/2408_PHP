@@ -73,6 +73,7 @@ const dayToKr = day => {
   return ARR_DAY[day];
 };
 
+// ` : 백틱
 const FORMAT_DATE = `${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTES}:${SECOND}.${MILLISECONDS} ${dayToKr(YOIL)}`;
 console.log(FORMAT_DATE);
 

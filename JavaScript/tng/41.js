@@ -9,45 +9,52 @@
 // 리셋 버튼을 누르면 기록 텍스트들 모두 지워짐
 
 (() => {
-  const BTN_STOP = document.querySelector("#btn_stop");
-  const BTN_RESTART = document.querySelector("#btn_restart");
-  const BTN_RECODE = document.querySelector("#btn_recode");
-  const BTN_RESET = document.querySelector("#btn_reset");
-  const SPAN = document.querySelector("#time");
-  let TEXT = () => (SPAN.textContent = setTimeVal());
-  let TIMER = setInterval(TEXT, 100);
+  // const BTN_STOP = document.querySelector("#btn_stop");
+  // const BTN_RESTART = document.querySelector("#btn_restart");
+  // const BTN_RECODE = document.querySelector("#btn_recode");
+  // const BTN_RESET = document.querySelector("#btn_reset");
+  // const SPAN = document.querySelector("#time");
 
-  TEXT();
+  let timeText = () => (document.querySelector("#time").textContent = getDate());
+  let intervalId = null;
 
-  BTN_STOP.addEventListener("click", () => clearInterval(TIMER));
-  BTN_RESTART.addEventListener("click", () => (TIMER = setInterval(TEXT, 100)));
-  BTN_RECODE.addEventListener("click", () => getTimeRecode(setTimeVal()));
-  BTN_RESET.addEventListener("click", () => resetRecode());
+  timeText(); // 바로 뜨게
+  intervalId = setInterval(timeText, 500);
+
+  document.querySelector("#btn_stop").addEventListener("click", () => {
+    clearInterval(intervalId);
+    intervalId = null;
+  });
+  document.querySelector("#btn_restart").addEventListener("click", () => {
+    if (intervalId === null) {
+      timeText(); // 바로 갱신되게
+      intervalId = setInterval(timeText, 500);
+    }
+  });
+  document.querySelector("#btn_recode").addEventListener("click", () => getTimeRecode(getDate()));
+  document.querySelector("#btn_reset").addEventListener("click", () => resetRecode());
 })();
 
-function toNumbers(num, len) {
+function leftPadZero(num, len) {
   return String(num).padStart(len, "0");
 }
 
 // 시간 텍스트 함수
-function setTimeVal() {
-  const NOW = new Date();
-  const HOUR = toNumbers(NOW.getHours(), 2);
-  const MINUTES = toNumbers(NOW.getMinutes(), 2);
-  const SECOND = toNumbers(NOW.getSeconds(), 2);
+function getDate() {
+  const NOW = new Date(); // 데이터 객체 인스턴스
+  const HOUR = NOW.getHours();
+  const MINUTES = NOW.getMinutes();
+  const SECOND = NOW.getSeconds();
 
-  let am_pm = "오전";
-  let hour = HOUR;
+  let ampm = HOUR >= 12 ? "오후" : "오전";
+  let hour = HOUR !== 0 ? HOUR : 12;
 
-  if (HOUR >= 12) {
-    am_pm = "오후";
-
-    if (HOUR > 12) {
-      hour = toNumbers(HOUR - 12, 2);
-    }
+  if (HOUR > 12) {
+    // 오후 01시 ~ 11시
+    hour = HOUR - 12;
   }
 
-  return `${am_pm} ${hour}:${MINUTES}:${SECOND}`;
+  return `${ampm} ${leftPadZero(hour, 2)}:${leftPadZero(MINUTES, 2)}:${leftPadZero(SECOND, 2)}`;
 }
 
 // 기록 함수

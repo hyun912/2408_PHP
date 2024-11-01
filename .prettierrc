@@ -32,7 +32,7 @@
   "insertPragma": false,
   "insertPragma_comment": "미리 정의된 @format marker의 사용 여부",
 
-  "printWidth": 100,
+  "printWidth": 120,
   "printWidth_comment": "한 줄 최대 글자수, 기본 80 | 권장 120",
 
   "requirePragma": false,
@@ -50,5 +50,5 @@
   "disableLanguages": ["php"],
   "plugins": ["@prettier/plugin-php"],
   "braceStyle": "1tbs",
-  "braceStyle_comment": "코드 스타일을 적용, per-cs:bsd | 1tbs: K&R"
+  "braceStyle_comment": "코드 스타일을 적용, per-cs: bsd | 1tbs: K&R"
 }

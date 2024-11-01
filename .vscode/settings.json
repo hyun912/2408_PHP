@@ -13,7 +13,8 @@
     "Yoil",
     "YOIL",
     "bcolor",
-    "Doki"
+    "Doki",
+    "ampm"
   ],
   "liveServer.settings.port": 5501,
   "[php]": {
