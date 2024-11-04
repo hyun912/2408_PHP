@@ -12,7 +12,7 @@ function my_db_conn() {
         PDO::ATTR_DEFAULT_FETCH_MODE   => PDO::FETCH_ASSOC
     ];
 
-    return new PDO(MY_MARIADB_DSN, MY_MARIADB_USER, MY_MARIADB_PASSWORD, $option);
+    return new PDO(MY_MARIADB_DNS, MY_MARIADB_USER, MY_MARIADB_PASSWORD, $option);
 }
 
 /**
