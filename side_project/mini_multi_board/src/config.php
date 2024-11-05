@@ -10,7 +10,7 @@ define('_MARIA_DB_HOST', 'localhost');
 define('_MARIA_DB_PORT', '3306');
 define('_MARIA_DB_USER', 'root');
 define('_MARIA_DB_PASSWORD', '123123');
-define('_MARIA_DB_NAME', 'min_multi_board');
+define('_MARIA_DB_NAME', 'mini_multi_board');
 define('_MARIA_DB_CHARSET', 'utf8mb4');
 define('_MARIA_DB_DNS', 
   'mysql:host='._MARIA_DB_HOST
