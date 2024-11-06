@@ -15,7 +15,8 @@
     "bcolor",
     "Doki",
     "ampm",
-    "ERRMODE"
+    "ERRMODE",
+    "regist"
   ],
   "liveServer.settings.port": 5501,
   "[php]": {

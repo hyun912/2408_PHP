@@ -11,31 +11,32 @@
     <title>Document</title>
   </head>
   <body class="vh-100">
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">미니보드</a>
-        </div>
-      </nav>
-    </header>
+
+    <?php require_once('View/inc/header.php') ?>
 
     <main class="d-flex justify-content-center align-items-center h-75">
-      <form style="width: 300px" action="./login.php">
-        <div id="errMsg" class="form-text text-danger">에러에러에러</div>
+      <form style="width: 300px" action="/regist" method="post">
+
+        <?php require_once('View/inc/errorMsg.php'); ?>
+
         <div class="mb-3">
-          <label for="id" class="form-label">아이디</label>
-          <input type="email" name="id" class="form-control" id="id" />
+          <label for="u_email" class="form-label">이메일</label>
+          <input type="email" id="u_email" name="u_email" class="form-control" value="<?php echo $this->userInfo['u_email'] ?>" />
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">비밀번호</label>
-          <input type="password" name="password" class="form-control" id="password" />
+          <label for="u_password" class="form-label">비밀번호</label>
+          <input type="password" id="u_password" name="u_password" class="form-control" />
         </div>
         <div class="mb-3">
-          <label for="name" class="form-label">이름</label>
-          <input type="text" name="name" class="form-control" id="name" />
+          <label for="u_password_chk" class="form-label">비밀번호 확인</label>
+          <input type="password" id="u_password_chk" name="u_password_chk" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="u_name" class="form-label">이름</label>
+          <input type="text" id="u_name" name="u_name" class="form-control" value="<?php echo $this->userInfo['u_name'] ?>" />
         </div>
         <button type="submit" class="btn btn-dark w-100 mb-3">가입</button>
-        <a href="./login.php" class="btn btn-secondary w-100">취소</a>
+        <a href="/login" class="btn btn-secondary w-100">취소</a>
       </form>
     </main>
 

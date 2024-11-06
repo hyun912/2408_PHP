@@ -8,9 +8,11 @@
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous" />
-    <link rel="stylesheet" href="View/css/myCommon.css" />
+    <link rel="stylesheet" href="/View/css/myCommon.css" />
 
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/View/js/board.js" defer></script>
+    <title>게시판</title>
   </head>
   <body>
 
@@ -23,6 +25,8 @@
         ?>
       </h1>
       <svg
+        id="btnInsert"
+        value="<?php echo $this->boardType ?>"
         xmlns="http://www.w3.org/2000/svg"
         width="40"
         height="40"
@@ -48,7 +52,7 @@
               <p class="card-text">
                 <?php echo $item['b_content'] ?>
               </p>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal">
+              <button type="button" class="btn btn-primary my-btn-detail" value="<?php echo $item['b_id'] ?>" data-bs-toggle="modal" data-bs-target="#detailModal">
                 상세
               </button>
             </div>
@@ -66,13 +70,14 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="detailModalLabel">모달 입네다.</h1>
+            <h1 class="modal-title fs-5" id="modalTitle"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>살려주셈요</p>
+            <p id="modalName"></p>
+            <p id="modalContent"></p>
             <br />
-            <img src="./img/001.png" class="object-fit-cover" alt="..." />
+            <img src="" id="modalImg" class="object-fit-cover" alt="..." />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
