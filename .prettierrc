@@ -48,7 +48,15 @@
   "embeddedLanguageFormatting_comment": "파일 안에 또다른 형식의 코드에도 Prettier를 적용할지 여부",
 
   "disableLanguages": ["php"],
-  "plugins": ["@prettier/plugin-php"],
+  "plugins": ["@prettier/plugin-php", "prettier-plugin-blade", "prettier-plugin-tailwindcss"],
   "braceStyle": "1tbs",
-  "braceStyle_comment": "코드 스타일을 적용, per-cs: bsd | 1tbs: K&R"
+  "braceStyle_comment": "코드 스타일을 적용, per-cs: bsd | 1tbs: K&R",
+  "overrides": [
+    {
+      "files": ["*.blade.php"],
+      "options": {
+        "parser": "blade"
+      }
+    }
+  ]
 }
