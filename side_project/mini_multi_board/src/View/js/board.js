@@ -23,7 +23,7 @@
     });
   });
 
-  document.querySelector("#btnInsert").addEventListener("click", () => {
-    location = "/boards/insert";
+  document.querySelector("#btnInsert").addEventListener("click", e => {
+    location = "/boards/insert?bc_type=" + e.target.dataset.value;
   });
 })();

@@ -16,6 +16,9 @@
 
     <main class="d-flex justify-content-center align-items-center h-75">
       <form style="width: 300px" action="/boards/insert" method="post" enctype="multipart/form-data">
+
+        <!-- 히든값 저장 -->
+        <input type="hidden" name="bc_type" value="<?php echo $this->boardType ?>">
         
         <?php require_once('View/inc/errorMsg.php'); ?>
         

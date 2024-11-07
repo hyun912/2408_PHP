@@ -23,5 +23,8 @@
     // "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
     "editor.formatOnSave": false
   },
+  "[javascript]": {
+    // "editor.formatOnSave": false
+  },
   "prettier.documentSelectors": ["**/*.{js,jsx,ts,tsx,vue,html,css,scss,less,json,md,mdx,graphql,yaml,yml,php}"]
 }
