@@ -1,20 +1,17 @@
 <?php
 
+use App\Http\Controllers\QueryController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', function () { return view('welcome'); });
 
-Route::get('/hi', function () {
-    return 'hello, world!';
-});
+Route::get('/hi', function () { return 'hello, world!'; });
 
-Route::get('/myview', function () {
-    return view('myView');
-});
+Route::get('/myview', function () { return view('myView'); });
 
 
 // 
@@ -105,6 +102,7 @@ Route::get('/send', function() {
   // 일반적인 뷰 데이터를 전달할 때는 view()를 사용하는 것이 가독성과 유지보수성 측면에서 더 나은 선택
 });
 
+
 // 
 // 대체 라우트
 // 
@@ -128,3 +126,56 @@ Route::prefix('/users')->group(function () {
   Route::put('/{id}', function () { return 'PUT : /users'; });
   Route::delete('/{id}', function () { return 'DELETE : /users'; });
 });
+
+
+// 
+// 컨트롤러 연결
+// 
+Route::get('/test', [TestController::class, 'index']);
+// Route::prefix('/task')->group(function () {
+//   Route::get('/create', [TaskController::class, 'index']);
+//   Route::get('/', [TaskController::class, 'create']);
+//   Route::post('/', [TaskController::class, 'store']);
+//   Route::get('/{id}', [TaskController::class, 'show']);
+//   Route::get('/{id}/edit', [TaskController::class, 'edit']);
+//   Route::put('/{id}', [TaskController::class, 'update']);
+//   Route::delete('/{id}', [TaskController::class, 'destroy']);
+// });
+
+// Route::resource : ↑에 7개만 모아서 하나로 됨, 나머진 동작안함
+// only([]) : 안에 있는것만 사용할수 있도록 제한, 자동 생성된 resource에서 쓰고싶은것만 있을때 사용됨
+Route::resource('/task', TaskController::class)->only(['index', 'create']);
+
+// except([]) : ↑와는 반대로 안에 들어있는걸 사용 못하도록 제한
+// Route::resource('/task', TaskController::class)->except(['index', 'create']); 
+
+
+// 
+// 블레이드 탬플릿
+// 
+
+Route::get('/edu', function () {
+  return view('edu')
+          ->with('data', ['name' => '홍', 'id' => 54]);
+});
+
+Route::get('/boards', function () {
+  return view('board');
+});
+
+Route::get('/extends', function () {
+  $result = [
+    ['id' => 1, 'name' => '홍', 'gender' => 'M']
+    ,['id' => 2, 'name' => '순', 'gender' => 'F']
+    ,['id' => 3, 'name' => '돌', 'gender' => 'M']
+  ];
+  return view('extends')
+          ->with('data', $result)
+          ->with('data2', []);
+});
+
+
+// 
+// 쿼리빌더 연습
+// 
+Route::get('/query', [QueryController::class, 'index']);
