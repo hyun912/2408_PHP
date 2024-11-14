@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Throwable;
 
 class UserController extends Controller {
   
@@ -67,4 +69,52 @@ class UserController extends Controller {
     return redirect()->route('goLogin');
   }
 
+  // public function goRegister() {
+  //   return view('register');
+  // }
+
+  public function register(Request $request) {
+    if($request->isMethod('get')) {
+      return view('register');
+    }else { // post
+      // 유효성 체크
+
+      $validator = Validator::make(
+        $request->only('u_email', 'u_password', 'u_password_chk', 'u_name')
+        ,[
+          'u_email' => ['required'
+                        ,'unique:users,u_email'
+                        ,'regex:/^[0-9a-zA-Z](?!.*?[\-\_\.]{2})[a-zA-Z0-9\-\_\.]{3,63}@[0-9a-zA-Z](?!.*?[\-\_\.]{2})[a-zA-Z0-9\-\_\.]{3,63}\.[a-zA-Z]{2,3}$/'
+                      ]
+          ,'u_password' => ['required', 'between:6,20', 'regex:/^[a-zA-Z0-9!@]+$/']
+          ,'u_password_chk' => ['same:u_password']
+          ,'u_name' => ['required',  'between:1,10', 'regex:/^[가-힣]+$/u']
+        ]
+      );
+  
+      if($validator->fails()) {
+        return redirect()->route('register')->withErrors($validator->errors())->withInput();
+      }
+  
+      // 회원 정보 생성
+      try{
+        DB::beginTransaction();
+        $userInsert = new User();
+        $userInsert->u_email = $request->u_email;
+        $userInsert->u_password = Hash::make($request->u_password);
+        $userInsert->u_name = $request->u_name;
+        $userInsert->save();
+        DB::commit();
+  
+        // Auth::login($userInsert);
+        // return redirect()->route('boards.index')->withInput();
+      }catch(Throwable $th) {
+        DB::rollBack();
+        // return redirect()->route('register')->withInput()
+        //         ->withErrors('회원가입중 문제가 발생하였습니다. 관리자에게 문의해주세요.\n'.$th->getMessage());
+      }
+
+      return redirect()->route('goLogin');
+    }
+  }
 }

@@ -13,7 +13,7 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
-    protected $middleware = [
+    protected $middleware = [ // 모든곳에서 사용
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
@@ -28,7 +28,7 @@ class Kernel extends HttpKernel
      *
      * @var array<string, array<int, class-string|string>>
      */
-    protected $middlewareGroups = [
+    protected $middlewareGroups = [ // route에서 각각의 그룹에서만 사용
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,

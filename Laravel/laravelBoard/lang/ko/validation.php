@@ -99,8 +99,8 @@ return [
   ],
   'string'               => ':attribute(을)를 문자로 구성하세요.',
   'timezone'             => ':attribute(을)를 유효한 시간대로 구성하세요.',
-  'unique'               => ':attribute(은)는 이미 있습니다.',
-  'url'                  => ':attribute(은)는 유효하지 않은 형식입니다.',
+  'unique'               => '이 :attribute(은)는 이미 있습니다.',
+  'url'                  => '이 :attribute(은)는 유효하지 않은 형식입니다.',
   'uploaded'             => '파일 크기가 서버에서 허용하는 수치를 넘습니다.',
 
 

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Board;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Throwable;
 
 class BoardController extends Controller
 {
@@ -28,7 +32,7 @@ class BoardController extends Controller
    */
   public function create()
   {
-      //
+      return view('insert');
   }
 
   /**
@@ -37,9 +41,47 @@ class BoardController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-      //
+  public function store(Request $request) {
+    // 유효성 검사
+    $validator = Validator::make(
+      $request->only('b_title', 'b_content', 'file')
+      ,[
+        'b_title' => 'required'
+        ,'b_content' => 'required'
+        ,'file' => 'required|image|max:1024'
+      ]
+    );
+
+    if($validator->fails()) {
+      return redirect()->route('boards.create')
+              ->withInput()->withErrors($validator->errors());
+    }
+    
+    try{
+      DB::beginTransaction();
+      
+      if($request->hasFile('file')) {
+        $file = $request->file('file');
+        $fileName = uniqid().'.'.$file->getClientOriginalExtension();
+        $filePath = '/'.$file->storeAs('img', $fileName, 'local');
+      }
+
+      $boardInsert = new Board();
+      $boardInsert->u_id = Auth::id();
+      $boardInsert->bc_type = 0;
+      $boardInsert->b_title = $request->b_title;
+      $boardInsert->b_content = $request->b_content;
+      $boardInsert->b_img = isset($filePath) ? $filePath : '';
+      $boardInsert->save();
+      DB::commit();
+
+      return redirect()->route('boards.index');
+    }catch(Throwable $th) {
+      DB::rollBack();
+
+      return redirect()->route('boards.create')
+              ->withInput()->withErrors($th->getMessage());
+    }
   }
 
   /**
