@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
 }
 
 main {
@@ -15,4 +16,12 @@ main {
 
 img {
   height: 300px;
+}
+
+.custom-pagination {
+  padding-bottom: 100px;
+}
+
+.custom-pagination p {
+  display: none;
 }

@@ -133,8 +133,8 @@ Route::prefix('/users')->group(function () {
 // 
 Route::get('/test', [TestController::class, 'index']);
 // Route::prefix('/task')->group(function () {
-//   Route::get('/create', [TaskController::class, 'index']);
-//   Route::get('/', [TaskController::class, 'create']);
+//   Route::get('/', [TaskController::class, 'index']);
+//   Route::get('/create', [TaskController::class, 'create']);
 //   Route::post('/', [TaskController::class, 'store']);
 //   Route::get('/{id}', [TaskController::class, 'show']);
 //   Route::get('/{id}/edit', [TaskController::class, 'edit']);
