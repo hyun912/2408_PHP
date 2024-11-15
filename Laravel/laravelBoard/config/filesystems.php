@@ -30,7 +30,7 @@ return [
 
     'disks' => [
 
-        'local' => [
+        'local' => [ // 로컬
             'driver' => 'local',
             // 'root' => storage_path('app'),
             'root' => public_path()
@@ -43,7 +43,7 @@ return [
             'visibility' => 'public',
         ],
 
-        's3' => [
+        's3' => [ // AWS
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),

@@ -15,10 +15,11 @@
 @section('main')
 
   <div class="text-center mt-5 mb-5">
-    <h1>자유게시판</h1>
-    <a href="{{ route('boards.create') }}" class="link-dark">
+    <h1>{{ $boardInfo->bc_name }}</h1>
+    <a href="{{ route('boards.create', ['bc_type' => $boardInfo->bc_type]) }}" class="link-dark">
       <svg
         xmlns="http://www.w3.org/2000/svg"
+        {{-- x-link="{{ route('boards.create') }}" --}}
         width="40"
         height="40"
         fill="currentColor"
@@ -32,7 +33,7 @@
 
   <main>
     @foreach ($data as $item)
-      <div class="card">
+      <div id="card{{ $item->b_id }}" class="card" >
         <img src="{{ asset($item->b_img) }}" class="card-img-top object-fit-cover" alt="..." />
         <div class="card-body">
           <h5 class="card-title">
@@ -47,7 +48,6 @@
         </div>
       </div>
     @endforeach
-    
   </main>
   
   <div class="d-flex justify-content-center custom-pagination">
@@ -68,8 +68,13 @@
           <br />
           <img src="" id="modalImg" class="object-fit-cover" alt="..." />
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <div class="modal-footer justify-content-between">
+          <div id ="modalDeleteParent">
+            {{-- <button id="modalDelete" type="button" class="btn btn-danger">삭제</button> --}}
+          </div>
+          <div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          </div>
         </div>
       </div>
     </div>
