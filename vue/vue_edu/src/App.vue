@@ -35,7 +35,7 @@
 
   <!-- v-for -->
   <!-- <div v-for="i in 8" :key="i++">
-    ** {{ i }} 단 **
+    {{ `** ${i} 단 **` }} 
     <div v-for="j in 9" :key="j">
       {{ `${i} * ${j} = ${i * j}` }}
     </div>
@@ -49,10 +49,36 @@
 
   <!-- 자식 컴포넌트 호출, 이름을 두단어 이상 조합 필수  -->
   <BoardComponent />
+
+  <hr>
+
+  <!-- props : 데이터를 자식에게 전달, 잘안씀 -->
+  <ChildComponent 
+    :data = "data"
+    :count = "cnt"
+  >
+    <h3>부모쪽에서 작성</h3>
+    <p>와! 샌즈!</p>
+  </ChildComponent>
+
+  <hr>
+
+  <!-- component event -->
+   <p>부모 cnt : {{ cnt }}</p>
+   <!-- <button @click="addCnt">부모버튼</button> -->
+
+   <EventComponent 
+    :cnt = "cnt"
+    @eventAddCnt = "addCnt"
+    @eventAddCntParam = "addCntParam"
+    @eventResetCnt = "resetCnt"
+   />
 </template>
 
 <script setup>
 import BoardComponent from './components/BoardComponent.vue';
+import ChildComponent from './components/ChildComponent.vue';
+import EventComponent from './components/EventComponent.vue';
 import { reactive, ref } from 'vue';
 
   // JS
@@ -81,8 +107,16 @@ import { reactive, ref } from 'vue';
     cnt.value--;
   }
 
+  function addCntParam(num) {
+    cnt.value += num;
+  }
+
   function changeName() {
     userInfo.name = '갑';
+  }
+
+  function resetCnt() {
+    cnt.value = 0;
   }
 
   function changeAgeBlue() {
@@ -91,7 +125,8 @@ import { reactive, ref } from 'vue';
   
 </script>
 
-<style>
+<!-- scoped를 붙이면 여기에만 적용 -->
+<style> 
   /* CSS */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
