@@ -12,14 +12,12 @@ return new class extends Migration
      * @return void
      */
     public function up() {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->string('name', 20);
-            $table->string('account', 20)->unique();
-            $table->string('password');
-            $table->char('gender', 1)->comment('0: 남자, 1: 여자');
-            $table->string('profile', 100)->nullable();
-            $table->string('refresh_token', 512)->nullable();
+        Schema::create('boards', function (Blueprint $table) {
+            $table->id('board_id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('content', 200);
+            $table->string('img', 100);
+            $table->integer('like')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +29,6 @@ return new class extends Migration
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('boards');
     }
 };
