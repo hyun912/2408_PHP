@@ -5,7 +5,7 @@
       <h2>{{ $store.state.user.userInfo.account }}</h2>
       <h3>작성 수 : {{ $store.state.user.userInfo.boards_count }}</h3>
     </div>
-    <router-link to="/board/create">
+    <router-link to="/boards/create">
       <button class="btn btn-submit">글작성</button>
     </router-link>
   </div>

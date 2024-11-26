@@ -1,20 +1,10 @@
 <template>
+  <!-- TODO: 스크롤 넘기는 처리 -->
+
   <!-- 리스트 -->
   <div class="board-list-box">
-    <div @click="openModal" class="item">
-      <img src="/img/001.png">
-    </div>
-    <div @click="openModal" class="item">
-      <img src="/img/002.png">
-    </div>
-    <div @click="openModal" class="item">
-      <img src="/img/003.png">
-    </div>
-    <div @click="openModal" class="item">
-      <img src="/img/004.png">
-    </div>
-    <div @click="openModal" class="item">
-      <img src="/img/005.png">
+    <div v-for="item in boardList" :key="item" @click="openModal" class="item">
+      <img :src="item.img">
     </div>
   </div>
 
@@ -38,7 +28,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { computed, onBeforeMount, ref } from 'vue';
+import { useStore } from 'vuex';
+
+
+const store = useStore();
+
+const boardList = computed(() => store.state.board.boardList);
+
+// 비포 마운트 처리
+onBeforeMount(() => {
+  if(store.state.board.boardList.length < 1) {
+    store.dispatch('board/getBoardList');
+  }
+});
 
 // 모달
 const modalFlg = ref(false);

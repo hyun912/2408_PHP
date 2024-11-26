@@ -7,6 +7,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Log;
 use PDOException;
 use Throwable;
+// use MyAuthException; // 같은 폴더내면 없어도됨
 
 class Handler extends ExceptionHandler {
   protected $dontReport = [
@@ -51,6 +52,12 @@ class Handler extends ExceptionHandler {
     }
 
     $errInfo = $this->context()[$code];
+
+    // 커스텀 인스턴스 확인
+    if($th instanceof MyAuthException) {
+      $code = $th->getMessage();
+      $errInfo = $th->context()[$code];
+    }
 
     // Response 객체 생성 및 반환
     $responseData = [

@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../axios";
 import router from "../../router";
 
 export default {
@@ -31,47 +32,48 @@ export default {
     login(context, userInfo) {
       const url = '/api/login';
       const data = JSON.stringify(userInfo);
-      const config = {
-        headers: {
-          'content-type' : 'application/json'
-        }
-      }
+      // const config = {
+      //   headers: {
+      //     'content-type' : 'application/json'
+      //   }
+      // }
 
-      axios.post(url, data, config)
-        .then(res => {
-          // 토큰 저장
-          // context.commit('setAccessToken', res.data.accessToken);
-          localStorage.setItem('accessToken', res.data.accessToken);
-          localStorage.setItem('refreshToken', res.data.refreshToken);
-          localStorage.setItem('userInfo', JSON.stringify(res.data.data));
-          context.commit('setAuthFlg', true);
-          context.commit('setUserInfo', res.data.data);
+      // axios.post(url, data, config)
+      axios.post(url, data)
+      .then(res => {
+        // 토큰 저장
+        // context.commit('setAccessToken', res.data.accessToken);
+        localStorage.setItem('accessToken', res.data.accessToken);
+        localStorage.setItem('refreshToken', res.data.refreshToken);
+        localStorage.setItem('userInfo', JSON.stringify(res.data.data));
+        context.commit('setAuthFlg', true);
+        context.commit('setUserInfo', res.data.data);
 
-          // 메인 페이지로 이동
-          router.replace('/board');
-        })
-        .catch(err => {
-          let errorMsgList = [];
-          const errorData = err.response.data;
-          
-          if(err.response.status === 422) {
-            // 유효성 검사 에러
-            if(errorData.data.account) {
-              errorMsgList.push(errorData.data.account[0]);
-            }
-
-            if(errorData.data.password) {
-              errorMsgList.push(errorData.data.password[0]);
-            }
-          }else if(err.response.status === 401) {
-            // 비밀번호 에러
-            errorMsgList.push(errorData.msg);
-          }else {
-            errorMsgList.push('예기치 못한 오류 발생');
+        // 메인 페이지로 이동
+        router.replace('/boards');
+      })
+      .catch(err => {
+        let errorMsgList = [];
+        const errorData = err.response.data;
+        
+        if(err.response.status === 422) {
+          // 유효성 검사 에러
+          if(errorData.data.account) {
+            errorMsgList.push(errorData.data.account[0]);
           }
 
-          alert(errorMsgList.join('\n'));
-        });
+          if(errorData.data.password) {
+            errorMsgList.push(errorData.data.password[0]);
+          }
+        }else if(err.response.status === 401) {
+          // 비밀번호 에러
+          errorMsgList.push(errorData.msg);
+        }else {
+          errorMsgList.push('예기치 못한 오류 발생');
+        }
+
+        alert(errorMsgList.join('\n'));
+      });
     },
 
     /**
@@ -80,15 +82,32 @@ export default {
      * @param {*} context
     */
     logout(context) {
-      // TODO : 백엔드 처리 추가
+      const url = '/api/logout';
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        }
+      };
 
-      localStorage.clear(); // 로컬 스토리지 비우기
+      axios.post(url, null, config)
+      .then(res => {
+        alert('로그아웃 완료');
+      })
+      .catch(err => {
+        alert('문제 발생하여 로그아웃 처리');
+      })
+      .finally(() => {
+        // 로컬 스토리지 초기화
+        localStorage.clear();
+  
+        // state 초기화
+        context.commit('setAuthFlg', false);
+        context.commit('setUserInfo', {});
 
-      // state 초기화
-      context.commit('setAuthFlg', false);
-      context.commit('setUserInfo', {});
+        router.replace('/login');
+      });
 
-      router.replace('/login');
+      // axios에서 finally 하고나선 이후처리 안먹힘. 비동기라서
     },
   },
   getters: {
