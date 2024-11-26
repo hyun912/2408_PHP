@@ -1,9 +1,9 @@
 <template>
   <div class="user-info-box">
-    <img src="/profile/default.png">
+    <img :src="$store.state.user.userInfo.profile">
     <div class="user-info-content">
-      <h2>유저ID</h2>
-      <h3>작성수 : 000</h3>
+      <h2>{{ $store.state.user.userInfo.account }}</h2>
+      <h3>작성 수 : {{ $store.state.user.userInfo.boards_count }}</h3>
     </div>
     <router-link to="/board/create">
       <button class="btn btn-submit">글작성</button>

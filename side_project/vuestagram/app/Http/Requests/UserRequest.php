@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
       'success' => false,
       'message' => '유효성 검사 오류',
       'data' => $validator->errors()
-    ]);
+    ], 422);
 
     throw new HttpResponseException($response);
   }
