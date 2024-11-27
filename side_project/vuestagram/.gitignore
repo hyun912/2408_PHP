@@ -1,6 +1,7 @@
 /node_modules
 /stubs
 /public/hot
+/public/img/*
 /public/storage
 /storage/*.key
 /vendor
