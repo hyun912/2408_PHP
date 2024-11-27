@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Services\Interfaces\BoardServiceInterface;
-use Illuminate\Http\Request;
 
 class BaseServiceController extends Controller {
 

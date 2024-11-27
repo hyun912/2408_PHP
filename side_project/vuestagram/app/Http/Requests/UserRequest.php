@@ -14,7 +14,7 @@ class UserRequest extends FormRequest
       ,'password' => ['required', 'between:5,20', 'regex:/^[0-9a-zA-Z!@]+$/']
     ];
 
-    if($this->routeIs('post.login')) {
+    if($this->routeIs('auth.login')) {
       $rules['account'][] = 'exists:users,account';
     }
 
