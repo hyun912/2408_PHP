@@ -29,10 +29,10 @@ class BoardController extends BaseServiceController {
     
     // 관계 방식
     // with('user:user_id,name,account) // 따로 뺄시 컬럼 지정
-    // $board = Board::with('user')->find($id);
+    $board = Board::with('user')->find($id);
 
-    // 레퍼지토리 방식
-    $board = $this->boardService->getBoardDetail($id);
+    // 개인적으로 해본 서비스 호출방식
+    // $board = $this->boardService->getBoardDetail($id);
 
     $responseData = [
       'success' => true

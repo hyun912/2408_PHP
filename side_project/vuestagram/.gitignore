@@ -1,11 +1,22 @@
+# 뷰 관련
 /node_modules
-/stubs
 /public/hot
-/public/img/*
+/public/css
+/public/js
+/public/profile
+/public/img
 /public/storage
-/storage/*.key
+
+# 라라벨 관련
 /vendor
+/stubs
 .env
+
+# vscode 설정 파일
+/.vscode
+
+# ETC
+/storage/*.key
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
@@ -14,4 +25,3 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 /.idea
-/.vscode
