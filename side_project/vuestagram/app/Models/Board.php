@@ -24,6 +24,6 @@ class Board extends Model {
   }
 
   public function user() {
-    return $this->belongsTo(User::class, 'user_id');
+    return $this->belongsTo(User::class, 'user_id')->select('user_id', 'name'); // select 할땐 FK 컬럼도 같이 가져와야함 무조건
   }
 }

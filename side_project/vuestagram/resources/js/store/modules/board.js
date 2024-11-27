@@ -1,18 +1,33 @@
 import axios from "../../axios";
-// import router from "../../router";
+import router from "../../router";
 
 export default {
   namespaced: true,
   state: () => ({
     boardList: [],
     page: 0,
+    boardDetail: null,
+    controllFlg: true,
+    lastPageFlg: false,
   }),
   mutations: {
     setBoardList(state, boardList) {
-      state.boardList = boardList;
+      state.boardList = state.boardList.concat(boardList);
     },
     setPage(state, page) {
       state.page = page;
+    },
+    setBoardDetail(state, board) {
+      state.boardDetail = board;
+    },
+    setBoardListUnShift(state, board) {
+      state.boardList.unshift(board);
+    },
+    setControllFlg(state, flg) {
+      state.controllFlg = flg;
+    },
+    setLastPageFlg(state, flg) {
+      state.lastPageFlg = flg;
     },
   },
   actions: {
@@ -21,25 +36,95 @@ export default {
      * 
      * @param {*} context
     */
-    getBoardList(context) {
-      const url = `/api/boards?page=${context.getters.getNextPage}`;
+    boardList(context) {
+      if(context.state.controllFlg && !context.state.lastPageFlg) { 
+        context.commit('setControllFlg', false);
+
+        const url = `/api/boards?page=${context.getters.getNextPage}`;
+        const config = {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+          }
+        };
+
+        axios.get(url, config)
+        .then(res => {
+          context.commit('setBoardList', res.data.boardList.data);
+          context.commit('setPage', res.data.boardList.current_page);
+          
+          // 마지막 페이지 일 경우 더이상 요청을 보내지 않도록 플래그 처리
+          if(res.data.boardList.current_page >= res.data.boardList.last_page) {
+            context.commit('setLastPageFlg', true);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+        })
+        .finally(() => {
+          context.commit('setControllFlg', true);
+        });
+      }
+    },
+
+    /**
+     * 게시글 상게 정보 획득
+     * 
+     * @param {*} context
+     * @param {int} id
+    */
+    showBoard(context, id) {
+      const url = `/api/boards/${id}`;
       const config = {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
         }
       };
 
       axios.get(url, config)
       .then(res => {
-        // console.log(res);
-        context.commit('setBoardList', res.data.boardList.data);
-        context.commit('setPage', res.data.boardList.current_page);
+        context.commit('setBoardDetail', res.data.board);
       })
       .catch(err => {
         console.error(err);
       });
-
     },
+    /**
+     * 게시글 작성
+     * 
+     * @param {*} context
+     * @param {object} data
+    */
+    storeBoard(context, data) {
+      if(context.state.controllFlg) {
+        context.commit('setControllFlg', false);
+        const url = '/api/boards';
+        const config = {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+          }
+        };
+        const formData = new FormData();
+        formData.append('content', data.content);
+        formData.append('file', data.file);
+        
+        axios.post(url, formData, config)
+        .then(res => {
+          context.commit('setBoardListUnShift', res.data.board);
+          
+          // 3번째 파라미터를 true로 주면 스토어로 가면서 다른 모듈에 접근 가능
+          context.commit('user/setUserInfoBoardsCount', null, { root: true }); 
+          
+          router.replace('/boards');
+        })
+        .catch(err => {
+          console.error(err);
+        })
+        .finally(() => {
+          context.commit('setControllFlg', true);
+        });
+      }
+    }
   },
   getters: {
     getNextPage(state) {
