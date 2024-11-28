@@ -1,0 +1,27 @@
+# 뷰 관련
+/node_modules
+/public/hot
+/public/css
+/public/js
+/public/profile
+/public/img
+/public/storage
+
+# 라라벨 관련
+/vendor
+/stubs
+.env
+
+# vscode 설정 파일
+/.vscode
+
+# ETC
+/storage/*.key
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
