@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 class MyAuth {
   public function handle(Request $request, Closure $next) {
     // 토큰 검증
-    Log::debug('MyAuth: ' . $request->bearerToken());
+    // Log::debug('MyAuth: ' . $request->bearerToken());
 
     MyToken::chkToken($request->bearerToken());
     

@@ -1,6 +1,4 @@
 <template>
-  <!-- TODO: 스크롤 넘기는 처리 -->
-
   <!-- 리스트 -->
   <div class="board-list-box">
     <div v-for="item in boardList" :key="item" @click="openModal(item.board_id)" class="item">
