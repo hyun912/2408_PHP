@@ -86,35 +86,117 @@ export default {
      * @param {*} context
     */
     logout(context) {
-      const url = '/api/logout';
+      context.dispatch('chkTokenAndContinueProcess', () => {
+        const url = '/api/logout';
+        const config = {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+          }
+        };
+
+        axios.post(url, null, config)
+        .then(res => {
+          alert('로그아웃 완료');
+        })
+        .catch(err => {
+          alert('문제 발생하여 로그아웃 처리');
+        })
+        .finally(() => {
+          // 로컬 스토리지 초기화
+          localStorage.clear();
+    
+          // state 초기화
+          context.commit('setAuthFlg', false);
+          context.commit('setUserInfo', {});
+
+          router.replace('/login');
+        });
+      });
+      // axios에서 finally 하고나선 이후처리 안먹힘. 비동기라서
+    },
+    /**
+     * 회원가입 처리
+     * 
+     * @param {*} context
+     * @param {*} userInfo
+    */
+    registration(context, userInfo) {
+      const url = '/api/registration';
       const config = {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+          'Content-Type': 'multipart/form-data',
+        }
+      };
+
+      // form data 세팅
+      const formData = new FormData();
+      formData.append('account', userInfo.account);
+      formData.append('password', userInfo.password);
+      formData.append('password_chk', userInfo.password_chk);
+      formData.append('name', userInfo.name);
+      formData.append('gender', userInfo.gender);
+      formData.append('profile', userInfo.profile);
+
+      axios.post(url, formData, config)
+      .then(res => {
+        alert('회원가입 성공\n가입하신 계정으로 로그인 해주세요.');
+
+        router.replace('/login');
+      })
+      .catch(err => {
+        // console.log(err.response.data);
+        alert('회원가입 실패');
+      });
+    },
+    /**
+     * 토큰 만료 체크후 재발급
+     * 
+     * @param {*} context
+     * @param {function} callbackProcess
+    */
+    chkTokenAndContinueProcess(context, callbackProcess) {
+      // 페이로드 획득
+      const payload = localStorage.getItem('accessToken').split('.')[1];
+      const base64 = payload.replace(/-/g, '+').replace('_', '/');
+      const objPayload = JSON.parse(atob(base64));
+      const now = new Date().getTime();
+
+      if((objPayload.exp * 1000) > now) {
+        // 유효한 토큰
+        callbackProcess();
+      }else {
+        // 만료된 토큰
+        context.dispatch('reissueAccessToken', callbackProcess);
+      }
+    },
+    /**
+     * 토큰 재발급 처리
+     * 
+     * @param {*} context
+     * @param {callback} callbackProcess
+    */
+    reissueAccessToken(context, callbackProcess) {
+      const url = '/api/reissue';
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('refreshToken')}`,
         }
       };
 
       axios.post(url, null, config)
       .then(res => {
-        alert('로그아웃 완료');
+        // 토큰 세팅
+        localStorage.setItem('accessToken', res.data.accessToken);
+        localStorage.setItem('refreshToken', res.data.refreshToken);
+
+        // 후속 처리 진행
+        callbackProcess();
       })
       .catch(err => {
-        alert('문제 발생하여 로그아웃 처리');
-      })
-      .finally(() => {
-        // 로컬 스토리지 초기화
-        localStorage.clear();
-  
-        // state 초기화
-        context.commit('setAuthFlg', false);
-        context.commit('setUserInfo', {});
-
-        router.replace('/login');
+        console.error(err);
       });
-
-      // axios에서 finally 하고나선 이후처리 안먹힘. 비동기라서
     },
   },
   getters: {
-
   },
 }
