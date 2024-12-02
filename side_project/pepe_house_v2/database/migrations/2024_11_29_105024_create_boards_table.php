@@ -12,7 +12,7 @@ return new class extends Migration {
       $table->bigInteger('tab_id')->unsigned()->default(0)->comment('0 아닐시 표시');
       $table->bigInteger('pcon_id')->unsigned()->default(0)->comment('0 아닐시 표시');
       $table->string('title', 50);
-      $table->string('content', 1024);
+      $table->string('content', 2000);
       $table->bigInteger('view')->default(0);
       $table->char('bookmark', 1)->default(0)->comment('0: 일반, 1: 즐겨찾기');
       $table->char('notice', 1)->default(0)->comment('0: 일반, 1: 공지');

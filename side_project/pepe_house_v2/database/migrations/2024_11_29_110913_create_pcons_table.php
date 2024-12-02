@@ -8,7 +8,8 @@ return new class extends Migration {
   public function up() {
     Schema::create('pcons', function (Blueprint $table) {
       $table->id();
-      $table->string('name', 50);
+      $table->string('name', 50)->comment('alt 출력문');
+      $table->string('img', 100)->comment('.webp 통일');
       $table->timestamps();
       $table->softDeletes();
     });
