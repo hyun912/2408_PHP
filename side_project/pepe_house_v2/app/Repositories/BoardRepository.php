@@ -7,6 +7,8 @@ use App\Repositories\Interfaces\BoardRepositoryInterface;
 
 class BoardRepository implements BoardRepositoryInterface {
   public function paginatedBoards() {
-    return Board::latest()->paginate(10);
+    return Board::where('notice', '<>', 1)
+            ->latest()->latest('id')
+            ->paginate(10);
   }
 }

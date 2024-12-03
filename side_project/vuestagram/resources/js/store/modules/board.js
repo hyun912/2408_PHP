@@ -69,7 +69,7 @@ export default {
     },
 
     /**
-     * 게시글 상게 정보 획득
+     * 게시글 상세 정보 획득
      * 
      * @param {*} context
      * @param {int} id

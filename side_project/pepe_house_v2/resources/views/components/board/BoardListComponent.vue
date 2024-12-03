@@ -22,14 +22,11 @@
             즐겨찾기
           </button> -->
           
-          <!-- <select name="sort" class="btn-sm" required>
+          <!-- 정렬 선택바 DIV -->
+          <!-- <select @change="sortBoard" name="sort" class="btn-sm">
               <option value="latest">최신순</option>
-              <option value="old">
-                  오래된순
-              </option>
-              <option value="view">
-                  조회순
-              </option>
+              <option value="old">오래된순</option>
+              <option value="view">조회순</option>
           </select> -->
         </div>
 
@@ -42,10 +39,10 @@
           </button> -->
 
           <!-- 굴파기 버튼 DIV-->
-          <button type="button" class="btn btn-sm">
+          <!-- <button type="button" class="btn btn-sm">
             <span class="btn-icons btn-icon-dig"></span>
             굴파기
-          </button>
+          </button> -->
         </div>
       </div>
       
@@ -55,13 +52,13 @@
           <a href="/">전체</a>
         </div>
 
-        <div class="btn-sm tab-disable">
+        <!-- <div class="btn-sm tab-disable">
           <a href="#">테스트</a>
         </div>
 
         <div class="btn-sm tab-disable">
           <a href="#">· · ·</a>
-        </div>
+        </div> -->
       </div>
 
       <!-- 메인 리스트 영역 DIV -->
@@ -131,42 +128,23 @@
 
       <!-- 페이지네이션 영역 -->
       <div class="pagination-bar">
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">&lt;</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar page-enable">1</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">2</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">3</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">4</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">5</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">6</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">7</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">8</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">9</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">10</button>
-        </a>
-        <a href="/">
-          <button class="btn btn-sm btn-page-bar">&gt;</button>
-        </a>
+
+        <!-- 10개 미만일시 -->
+        <button v-if="pages.length === 1" type="button" class="btn btn-sm btn-page-bar page-enable">1</button>
+
+        <div v-else class="pagination-bar">
+          <button v-if="currentPage !== 1" @click="movePage(currentPage - 1)" type="button" class="btn btn-sm btn-page-bar">&lt;</button>
+          
+          <div v-for="item in pages" :key="item">
+              <button @click="movePage(item.label)" type="button" class="btn btn-sm btn-page-bar"
+                :class="{'page-enable' : item.label === String($store.state.board.currentPage)}"
+              >
+                {{ item.label }}
+              </button>
+          </div>
+    
+          <button v-if="currentPage !== lastPage" @click="movePage(currentPage + 1)" type="button" class="btn btn-sm btn-page-bar">&gt;</button>
+        </div>
       </div>
     </div>
   </div>
@@ -178,6 +156,9 @@
 
   const store = useStore();
   const boards = computed(() => store.state.board.boardList);
+  const pages = computed(() => store.state.board.links);
+  const currentPage = computed(() => Number(store.state.board.currentPage));
+  const lastPage = computed(() =>  Number(store.state.board.lastPage));
 
   // 마운트 전에 로드
   onBeforeMount(() => {
@@ -185,7 +166,19 @@
       store.dispatch('board/boardList');
     }
   });
-    
+
+  // 페이지 이동 처리
+  const movePage = (page) => {
+    if(page !== '...' && page !== store.state.board.currentPage) {
+      store.dispatch('board/boardList', page);
+    }
+  }
+
+  // 리스트 정렬
+  // const sortBoard = (e) => {
+  //   console.log(e.target.value);
+  // };
+
 </script>
 
 <style>
