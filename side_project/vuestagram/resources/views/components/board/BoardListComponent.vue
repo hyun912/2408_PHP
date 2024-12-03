@@ -39,6 +39,7 @@
   const boardDetail = computed(() => store.state.board.boardDetail);
 
   // 비포 마운트 처리 ------------------------------------------------------------
+  // 컴포넌트가 마운트되기 직전에 호출
   onBeforeMount(() => {
     if(store.state.board.boardList.length < 1) {
       store.dispatch('board/boardList');

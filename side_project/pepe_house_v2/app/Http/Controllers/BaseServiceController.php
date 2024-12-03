@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Interfaces\BoardRepositoryInterface;
+use App\Services\Interfaces\BoardServiceInterface;
 use Illuminate\Http\Request;
 
 class BaseServiceController extends Controller {
-  protected $boardRepository;
+  protected $boardService;
 
-  public function __construct(BoardRepositoryInterface $boardRepository) {
-    $this->boardRepository = $boardRepository;
+  public function __construct(BoardServiceInterface $boardService) {
+    $this->boardService = $boardService;
   }
 }

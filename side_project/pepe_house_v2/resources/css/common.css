@@ -1,0 +1,318 @@
+/*//////////////////////////////////////////////////////////////// */
+/* 폰트 불러오기 ////////////////////////////////////////////////// */
+/*//////////////////////////////////////////////////////////////// */
+
+@import url("//fonts.googleapis.com/earlyaccess/jejuhallasan.css");
+
+/*///////////////////////////////////////////////////////////// */
+/* 공용 설정 ////////////////////////////////////////////////// */
+/*//////////////////////////////////////////////////////////// */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* 헤더고정을 위해 위아래 나눔*/
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  align-content: center;
+  min-height: 100vh;
+  background: canvas;
+  color: canvasText;
+
+  /* 문단을 맞추기위해 상하 스크롤바 활성*/
+  overflow-y: scroll;
+}
+
+/* a 태그 버튼용 */
+.btn {
+  background-color: transparent;
+  text-align: center;
+}
+
+/* 기본적으로 a버튼 호버시 음영변경 */
+.btn:hover {
+  background-color: #eee;
+}
+
+/* 작은 버튼용 설정 */
+.btn-sm {
+  border: 1px solid #bbb;
+  color: initial;
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  height: 28.59px;
+}
+
+/* a버튼 간격 조절용 */
+.btn-mr {
+  margin-right: 0.3rem;
+}
+
+/* a태그 기본속성 삭제 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+/*////////////////////////////////////////////////////////// */
+/* Header ////////////////////////////////////////////////// */
+/*////////////////////////////////////////////////////////// */
+
+header {
+  /* 중앙정렬후 배경 및 글자색 설정 */
+  /* display: flex;
+  justify-content: center;
+  text-align: center; */
+  background-color: #3d414d;
+  color: #fff;
+}
+
+h1 {
+  /* 중앙정렬 FLEX */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 폰트 설정 */
+  font-size: clamp(2rem, 7vw + 1rem, 3.6rem); /* 최소, 선호, 최대 */
+  text-wrap: balance;
+  font-family: "Jeju Hallasan";
+  font-weight: normal;
+  min-height: 100px;
+}
+
+/* 헤더 좌측 우물 WEBP */
+.pepe-well {
+  /* SPAN은 기본적으로 인라인 요소기 때문에 블록화해줌 */
+  display: inline-block;
+  width: 3.5rem;
+  height: 2.5rem;
+  /* margin: 1rem 0.3rem 0 0.5rem; */
+  vertical-align: bottom;
+  background-image: url("/img/icons/well.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+/* ↑우물 호버시 우물 GIF 재생 */
+.pepe-well:hover {
+  background-image: url("/img/icons/well.gif");
+}
+
+/* 헤더 우측 페페 WEBP */
+.pepe-bro {
+  /* SPAN은 기본적으로 인라인 요소기 때문에 블록화해줌 */
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  /* margin: 0.5rem 0.5rem 0 0.5rem; */
+  vertical-align: bottom;
+  background-image: url("/img/pcons/left_simulug.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* ↑페페 호버시 따봉 WEBP */
+.pepe-bro:hover {
+  background-image: url("/img/pcons/left_ttabong.webp");
+}
+
+/* ↑페페 누르고 있을시 쓰담 GIF 재생 */
+.pepe-bro:active {
+  background-image: url("/img/pcons/sseudam.gif");
+}
+
+/* 그 옆의 βeta 텍스트 */
+.text-beta {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* Main ////////////////////////////////////////////////// */
+/*/////////////////////////////////////////////////////////*/
+
+main {
+  /* 좌우 여백주기용 그리드 */
+  display: grid;
+  grid-template-columns: 1fr 1000px 1fr;
+}
+
+/* 반응형 설정: 화면 너비가 1000px 이하일 때 */
+@media (max-width: 1000px) {
+  main {
+    grid-template-columns: 1fr; /* 가운데 열만 표시 */
+  }
+
+  /* 좌우 DIV 숨기기 */
+  main > div:first-child,
+  main > div:last-child {
+    display: none;
+  }
+}
+
+/* 컨테이너 외곽선 설정 */
+.container {
+  border: 1px solid #bbbbbb;
+  border-top: none;
+}
+
+footer > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* 화이트 & 다크모드 관련설정 ///////////////////////////////*/
+/*/////////////////////////////////////////////////////////*/
+
+[data-theme="dark"] {
+  color-scheme: dark only;
+
+  /* 버튼 호버색 변경*/
+  .btn:hover {
+    background-color: #2e3136;
+  }
+
+  button > svg {
+    color: #000;
+  }
+
+  .container {
+    background-color: #222;
+  }
+}
+
+[data-theme="light"] {
+  color-scheme: light only;
+
+  button > svg {
+    color: #fff;
+  }
+}
+
+header svg {
+  width: 60px;
+  position: absolute;
+  right: 100%;
+  top: 0;
+  height: auto;
+  scale: 1 1;
+  transform-origin: 100% 100%;
+  rotate: 25deg;
+  fill: canvasText;
+  translate: -25% -25%;
+}
+
+body::before {
+  --size: 30px;
+  --line: color-mix(in lch, canvasText, transparent 85%);
+  content: "";
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  mask: linear-gradient(-25deg, transparent 30%, white);
+  top: 0;
+  transform-style: flat;
+  pointer-events: none;
+  z-index: -1;
+}
+
+::view-transition-new(body),
+::view-transition-old(body) {
+  /* animation: pan 1s ease-in-out; */
+  backface-visibility: hidden;
+  box-shadow: 2.2px 61.3px 73.1px -2px hsl(0 0% 0% / 0.58);
+}
+
+::view-transition-new(body) {
+  --sr: 180deg;
+  background: canvas;
+}
+
+::view-transition-old(body) {
+  --sr: 0deg;
+  backface-visibility: hidden;
+}
+
+body {
+  view-transition-name: body;
+}
+
+:root {
+  view-transition-name: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+[aria-pressed="true"] path:nth-of-type(1) {
+  display: none;
+}
+
+[aria-pressed="false"] path:nth-of-type(2) {
+  display: none;
+}
+
+/* 해&달 아이콘 */
+[aria-pressed] {
+  position: fixed;
+  top: 1.75rem;
+  right: 1rem;
+  width: 50px;
+  aspect-ratio: 1;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+button > svg {
+  width: 50%;
+}
+
+button:is(:focus-visible, :hover) {
+  --intent: 1;
+}
+
+.bear-link {
+  color: canvasText;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 48px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  opacity: 0.8;
+}
+
+:where(.x-link, .bear-link):is(:hover, :focus-visible) {
+  opacity: 1;
+}
+
+.bear-link svg {
+  width: 75%;
+}

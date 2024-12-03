@@ -30,7 +30,7 @@ return [
 
     'disks' => [
 
-        'khs' => [
+        'pepe' => [
             'driver' => 'local',
             'root' => public_path(),
         ],

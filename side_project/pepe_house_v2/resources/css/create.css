@@ -1,0 +1,296 @@
+.container {
+  padding: 1.5rem;
+  border-bottom: none;
+}
+
+/* 위중앙 영역 */
+.main-middle {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+/* 메인 컨텐츠 박스 영역 */
+.box {
+  margin-bottom: 0.7rem;
+}
+
+/* 전체적인 박스들 설정 */
+select,
+input,
+.box-content {
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  resize: none;
+  border: 1px solid #bbb;
+}
+
+/* 탭 제목 설정 */
+.box > select,
+.box > input {
+  padding: 10px;
+  border-radius: 3px;
+}
+
+/* 탭 선택 영역 */
+/* .box-select {
+} */
+.box > select {
+  height: 35px;
+  font-size: 0.7rem;
+}
+
+/* 제목 입력 영역 */
+/* .box-title {
+} */
+.box > input {
+  padding-left: 14px;
+}
+
+/* 내용 전체 영역 */
+.box-content {
+  display: grid;
+  grid-template-rows: 34px 1fr;
+  border-radius: 9px;
+  height: 500px;
+}
+
+/* 아이콘 놓을 문단 영역 */
+.text-icons {
+  display: flex;
+  justify-content: flex-end;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid #bbb;
+  padding: 3px;
+}
+/* 페페 미니 아이콘 */
+.btn-icon-pepecon {
+  background-image: url("../img/con_stamp.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  width: 27px;
+  height: 27px;
+  margin-right: 5rem;
+  cursor: pointer;
+  opacity: 80%;
+}
+
+.btn-icon-pepecon:hover {
+  opacity: 100%;
+  border: 1px solid #0000ff;
+}
+
+/* 팝업 포지션 잡기위한 바디 영역  */
+.pcon-body {
+  display: none;
+  justify-content: flex-end;
+  position: relative;
+}
+
+/* 페페콘 선택창 영역 */
+.pcon-select-window {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  top: 2rem;
+  width: 300px;
+  padding: 10px;
+  z-index: 1;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* 페페콘 선택창 이미지들 */
+.pcon-select-window img {
+  width: 80px;
+  height: 80px;
+  margin: 0.2rem auto;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* 내용 영역 */
+.content-area {
+  position: relative;
+  /* margin: 0; */
+  overflow-y: auto; /* 세로 스크롤 생성 */
+}
+/* 내부 입력 영역 */
+.text-content {
+  font-size: 0.9rem;
+  padding: 15px;
+  outline: none;
+  white-space: pre-wrap; /* 줄바꿈을 유지 */
+}
+/* 플레이스 홀더용 */
+.placeholder {
+  color: #aaa;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  font-size: 0.9rem;
+}
+
+/* 하단 버튼 영역 */
+.main-bottom {
+  float: right;
+}
+.main-bottom > button[type="submit"] {
+  padding: 0.4rem 0.6rem;
+}
+
+.out-side {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 0;
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* 다크모드 관련설정 ///////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////*/
+
+/* 다크모드로 변경시 그에 맞춰 색상도 바꿔줘야함*/
+[data-theme="dark"] {
+  /* 선택 옵션 글자색 변경 */
+  .box > select {
+    color: #000;
+  }
+
+  /* 내용 콘부분 색맞춤*/
+  .text-icons {
+    background-color: #353535;
+  }
+
+  /* 내용 부분만 흰바탕으로 */
+  /* .text-content, */
+  .box-content {
+    background-color: #fff;
+    color: #000;
+  }
+
+  /* 모달 텍스트 색맞춤 */
+  .modal-img + p {
+    color: #000;
+  }
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* 모달박스 관련설정 ///////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////*/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  margin: 10% auto;
+  width: 50%;
+  height: 50%;
+  box-shadow:
+    0 5px 8px 0 rgba(0, 0, 0, 0.2),
+    0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  /* animation-name: modalopen; */
+  /* animation-duration: var(--modal-duration); */
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  font-size: 1.3rem;
+  border-radius: 5px;
+}
+
+/* 표시할 이미지 영역 */
+.modal-img {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.modal-img > img {
+  width: 15rem;
+}
+
+/* .button {
+  background: #428bca;
+  padding: 1em 2em;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #3876ac;
+} */
+
+/* .modal-header h2,
+.modal-footer h3 {
+  margin: 0;
+} */
+
+/* .modal-header {
+  background: var(--modal-color);
+  padding: 15px;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+} */
+
+/* .modal-footer {
+  background: var(--modal-color);
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+} */
+
+/* .close {
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+  color: #fff;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+} */
+
+/* @keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  } 
+}*/

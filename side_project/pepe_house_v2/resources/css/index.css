@@ -1,0 +1,363 @@
+/*/////////////////////////////////////////////////////////*/
+/* 배너 ////////////////////////////////////////////////// */
+/*/////////////////////////////////////////////////////////*/
+
+.container {
+  /* 배너 넣어줄 위아래 그리드를 나눔 */
+  display: grid;
+  grid-template-rows: 165px 1fr;
+}
+
+/* 배너 삽입 */
+.pepe-banner {
+  background-image: url("/img/banner.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* 본문 ////////////////////////////////////////////////// */
+/*/////////////////////////////////////////////////////////*/
+
+.content {
+  /* 본문영역 기본 여백설정 */
+  padding: 1rem;
+}
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 위 버튼들 영역 */
+.content-top {
+  /* 버튼을 좌우측에 배치하기위해 플렉스 비트윈 사용 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* a버튼들 안의 아이콘 배치 */
+.btn-icons {
+  /* SPAN은 기본적으로 인라인 요소기 때문에 블록화해줌 */
+  display: inline-block;
+
+  /* 크기 및 위치 조정 */
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 왼쪽 버튼 그룹 */
+/* .content-top-left {
+} */
+
+/* 전체굴 아이콘 */
+.btn-icon-all-pages {
+  background-image: url("/img/icons/all_pages.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* 즐겨찾기 아이콘 */
+.btn-icon-bookmark {
+  background-image: url("/img/icons/star.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  /* 다크모드 적용후에도 원본 유지를 위해 강제사용 */
+  filter: initial !important;
+}
+
+/* 정렬 셀렉트 버튼 */
+.content-top-left > select {
+  /* appearance: none;
+  -webkit-appearance: none; */
+  padding: 0.39rem 0.3rem 0.26rem;
+  /* margin: 0; */
+  height: 1.82rem;
+  text-align: left;
+  outline: none;
+}
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 오른쪽 버튼 그룹 */
+/* .content-top-right {
+} */
+
+/* 탭편집 아이콘 */
+.btn-icon-edit-tab {
+  background-image: url("/img/icons/edit_tabs.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* 굴파기 아이콘 */
+.btn-icon-dig {
+  background-image: url("/img/icons/dig.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 탭 영역 */
+.content-tab {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0 0.2rem;
+  border-bottom: 1px solid #bbb;
+}
+
+/* 오버스크롤 숨김 */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* a 태그 영역확장을 위해 내부여백 제거 */
+.content-tab > div {
+  padding: 0;
+}
+.content-tab > div > a {
+  padding: 0.3rem 0.5rem;
+  display: block;
+  font-size: 1rem;
+}
+
+/* 활성화된 탭 */
+.tab-enable {
+  border: 1px solid #bbb;
+  border-bottom: none;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  font-weight: 600;
+  box-shadow: 0 1px 0 0 #fff;
+  margin-right: 3px;
+}
+
+/* 비활성화된 탭 */
+.tab-disable {
+  border: none;
+  opacity: 50%;
+}
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 메인 리스트 영역 */
+.content-list {
+  margin: 10px 0;
+  /* border-bottom: 0.1px solid #bbb; */
+}
+
+/* 그리드로 나눈후 중앙정렬 */
+.item {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* 리스트 헤드 영역 */
+.list-head {
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-bottom: 1px solid #bbb;
+}
+
+/* 리스트 제목과 작성자를 왼쪽으로 */
+.list-head :nth-child(n + 2):nth-child(-n + 3),
+.list-board :nth-child(n + 2):nth-child(-n + 3) {
+  text-align: left;
+  /* 초과제목 안보이게 */
+  overflow: hidden;
+  /* 초과시 ... */
+  text-overflow: ellipsis;
+  /* 개행 X */
+  white-space: nowrap;
+}
+
+/* 리스트 게시글 영역 */
+.list-board {
+  font-size: 0.8rem;
+  border-bottom: 0.5px solid #ddd;
+}
+
+/* 글이 없을시 */
+.list-non {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  text-align: center;
+}
+
+/* 리스트 공지 영역 */
+.list-notice {
+  background-color: #eee;
+}
+
+/* 제목쪽에 탭이 존재할시 표시 */
+.list-tab {
+  /* SPAN은 기본적으로 인라인 요소기 때문에 블록화해줌 */
+  display: inline-block;
+  background-color: #42464f;
+  color: #fff;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  /* margin: 0; */
+}
+
+/* 썸네일 미리보기용으로 포지션 설정*/
+.content-list a {
+  position: relative;
+}
+.thumb-preview {
+  display: none;
+  background-color: #fff;
+  /* background-image: url("/img/pcons/simulug.webp"); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: contain;
+
+  position: absolute;
+  top: 1.8rem;
+  left: 1rem;
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+  padding: 10px;
+  z-index: 1;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+/* 호버시 보여줌 */
+.list-board:hover + .thumb-preview {
+  display: inline-block;
+}
+
+/* 작성자 인장 아이콘 */
+.list-icon-title-stamp {
+  background-image: url("/profile/default.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  /* 다크모드 적용후에도 원본 유지를 위해 강제사용 */
+  filter: initial !important;
+}
+
+/* 리스트의 마지막만 아래 굵은선 나머진 제외 */
+/* .content-list:last-child {
+  border-bottom: 1px solid #bbb;
+} */
+/* .list-head a:last-child,
+.list-board a:last-child {
+  border: none;
+} */
+
+/*/////////////////////////////////////////////////////////*/
+
+/* 하단 영역 */
+/* .footer {
+} */
+
+/* 검색바 영역 우측끝에 배치 */
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 검색선택바 영역 */
+.search-bar > select {
+  text-align: left;
+  vertical-align: middle;
+  outline: none;
+  height: 1.65rem;
+  margin: 0;
+}
+
+/* 검색 입력바 영역 */
+.search-bar > input {
+  background-color: transparent;
+  outline: none;
+  height: 1.65rem;
+}
+
+/* 검색 아이콘 영역 */
+.search-bar > button {
+  background-image: url("/img/icons/search.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 1.6rem;
+  height: 1.65rem;
+  margin: 0;
+}
+
+/* 페이지네이션 영역 */
+.pagination-bar {
+  display: flex;
+  justify-content: center;
+}
+
+/* 페이지 문단 영역 */
+.btn-page-bar {
+  background-color: transparent;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 30px;
+}
+/* 페이지 활성화 영역  */
+.page-enable {
+  pointer-events: none;
+  background-color: #ddd;
+  border: 1px solid #555;
+}
+
+/*/////////////////////////////////////////////////////////*/
+/* 다크모드 관련설정 ///////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////*/
+
+/* 다크모드로 변경시 그에 맞춰 색상도 바꿔줘야함*/
+[data-theme="dark"] {
+  /* 아이콘들 흐려짐 방지 */
+  .btn-icons {
+    filter: invert(100%);
+  }
+
+  /* 활성탭 영역 하단 외곽선색 변경 */
+  .tab-enable {
+    box-shadow: 0 2px 0 0 #121212;
+  }
+
+  /* 공지 영역색 변경 */
+  .list-notice {
+    background-color: #555;
+  }
+
+  /* 썸네일 이미지 배경색 변경 */
+  .thumb-preview {
+    background-color: #121212;
+  }
+
+  /* 활성화된 페이지색 변경 */
+  .page-enable {
+    border: 1px solid #dbdbdb;
+    background-color: #444444;
+  }
+}
