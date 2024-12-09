@@ -42,6 +42,7 @@
   // 컴포넌트가 마운트되기 직전에 호출
   onBeforeMount(() => {
     if(store.state.board.boardList.length < 1) {
+      // 디스패치 인자는 하나만 전달할수있어서 여러개를 보낼시 배열로 보내야함
       store.dispatch('board/boardList');
     }
   });
