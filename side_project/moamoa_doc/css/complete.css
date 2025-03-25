@@ -1,0 +1,53 @@
+/* 암색 배경 */
+.data-form {
+  background-color: #E8E8E8;
+  width: 710px;
+  max-width: 38vw;
+  height: 500px;
+}
+
+/* 텍스트 문단 */
+.data-info {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+/* 텍스트 간격 */
+.data-info > p {
+  margin: 70px 0;
+}
+
+/* 다음 버튼 끝쪽으로 배치 */
+.next-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* 다음 버튼 */
+.next-btn button {
+  position: absolute;
+  top: 107%;
+  left: calc(100% - 230px); /* 컨테이너 너비에서 버튼 너비를 뺀 위치 */
+  background-color: transparent;
+  font-size: 2.3rem;
+  width: 250px;
+  max-width: 70vw;
+  text-align: right;
+}
+
+/* 버튼 호버 효과 삭제 */
+.next-btn button:hover {
+  background-color: initial;
+  color: initial;
+}
+
+/* 모바일 설정: 화면 너비가 일정 크기 이하일 때 */
+@media(max-width: 600px) {
+  .data-form {
+    width: 100%;
+    max-width: 80vw;
+    margin-top: 80px;
+  }
+}

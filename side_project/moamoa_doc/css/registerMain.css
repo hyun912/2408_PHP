@@ -1,0 +1,39 @@
+/* ---------------------------------------------------------------------- 
+  메인
+----------------------------------------------------------------------*/
+
+/* 입력 폼 */
+.data-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* 분기 배치 버튼 */
+.data-button button {
+  padding: 10px;
+  width: 680px;
+  max-width: 40vw;
+  height: 150px;
+  font-size: 2.8rem;
+}
+
+/* 상하 간격 띄움 */
+.data-button:nth-child(2) {
+  margin-top: 50px;
+} 
+
+/* 모바일 설정 */
+@media(max-width: 600px) {
+  .data-button button {
+    width: 470px;
+    max-width: 80vw;
+  }
+  
+  /* 메인 페이지용 버튼 배치 */
+  .data-button:nth-child(1) {
+    margin-top: 100px;
+  } 
+}

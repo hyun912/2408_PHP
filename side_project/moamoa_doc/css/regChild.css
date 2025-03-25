@@ -1,0 +1,100 @@
+
+.btn-group button:hover {
+  background-color: #737373;
+  color: #fff;
+}
+
+/* 암색 배경 */
+.data-form {
+  background-color: #E8E8E8;
+  width: 710px;
+  max-width: 38vw;
+  height: 500px;
+}
+
+/* 텍스트 문단 */
+.data-info {
+  font-size: 3rem;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 80vw;
+}
+
+/* 아이콘 문단 */
+.icon-img {
+  display: inline-block;
+  background-color: #8A9FF6;
+  border-radius: 50%;
+  padding: 10px;
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+/* 아이콘 크기 */
+.icon-img img {
+  width: 100%;
+}
+
+/* 풋터 텍스트 */
+.mini-text {
+  display: block;
+  font-size: 1.7rem;
+  margin: 30px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-group button {
+  background-color: #fff;
+  padding: 15px 50px;
+  margin: 30px;
+  font-size: 2.3rem;
+  max-width: 40vw;
+}
+
+/* 모바일 설정: 화면 너비가 일정 크기 이하일 때 */
+@media(max-width: 1260px) {
+  /* 우측 박스 너비 조절 */
+  .data-form {
+    width: 93%;
+    max-width: 80vw;
+    padding: 10px;
+  }
+
+  /* 글자크기 조절 */
+  .data-info {
+    font-size: 2.3rem;
+    margin-top: 10px;
+  }
+
+  .icon-img {
+    width: 60px;
+    height: 60px;  
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group button {
+    font-size: 1.8rem;
+    padding: 10px 30px;
+    margin: 10px;
+  }
+}
+
+@media(max-width: 600px) {
+  /* 높이 조절 */
+  .data-form {
+    margin-top: 80px;
+    height: 90%;
+  }
+}

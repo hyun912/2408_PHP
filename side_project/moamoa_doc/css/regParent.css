@@ -1,0 +1,95 @@
+/* 암색 배경 */
+.data-form {
+  background-color: #E8E8E8;
+  width: 710px;
+  max-width: 38vw;
+  height: 100%;
+  max-height: 500px;
+}
+
+/* 텍스트 문단 */
+.data-info {
+  font-size: 3.5rem;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ~님의 가족코드 텍스트 */
+.data-info > p:nth-child(1) {
+  margin-top: 60px;
+}
+
+/* 가족코드 문단 */
+.fam-code {
+  margin-top: 30px;
+}
+
+/* 가족코드 텍스트 */
+.fam-code > p {
+  background-color: #fff;
+  width: 100%;
+  max-width: 80vw;
+  padding: 50px;
+}
+
+/* 풋터 텍스트 */
+.mini-text {
+  display: block;
+  font-size: 1.7rem;
+  margin-top: 80px;
+}
+
+/* 다음 버튼 끝쪽으로 배치 */
+.next-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* 다음 버튼 */
+.next-btn button {
+  position: absolute;
+  top: 107%;
+  left: calc(100% - 230px); /* 컨테이너 너비에서 버튼 너비를 뺀 위치 */
+  background-color: transparent;
+  font-size: 2.3rem;
+  width: 250px;
+  max-width: 70vw;
+  text-align: right;
+}
+
+/* 버튼 호버 효과 삭제 */
+.next-btn button:hover {
+  background-color: initial;
+  color: initial;
+}
+
+/* 모바일 설정: 화면 너비가 일정 크기 이하일 때 */
+@media(max-width: 1260px) {
+  /* 우측 박스 너비 조절 */
+  .data-form {
+    width: 93%;
+    max-width: 80vw;
+  }
+
+  /* 코드 흰창 여백 제거 */
+  .fam-code > p {
+    padding: 0;
+  }
+
+  /* 글자크기 조절 */
+  .data-info {
+    font-size: 2.8rem;
+  }
+}
+
+@media(max-width: 600px) {
+  /* 높이 조절 */
+  .data-form {
+    margin-top: 80px;
+  }
+}

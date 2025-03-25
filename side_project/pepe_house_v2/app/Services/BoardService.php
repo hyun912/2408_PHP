@@ -17,4 +17,8 @@ class BoardService implements BoardServiceInterface {
     
     return $boards;
   }
+
+  public function getBoardDetail(int $id) {
+    
+  }
 }

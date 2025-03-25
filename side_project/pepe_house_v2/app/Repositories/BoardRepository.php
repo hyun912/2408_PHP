@@ -11,4 +11,8 @@ class BoardRepository implements BoardRepositoryInterface {
             ->latest()->latest('id')
             ->paginate(10);
   }
+
+  public function showDetail(int $id) {
+    
+  }
 }
